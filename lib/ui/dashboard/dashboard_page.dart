@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:kawalcovid19/common/color_palettes.dart';
-import 'package:kawalcovid19/common/sizes.dart';
-import 'package:kawalcovid19/widget/alert/pop_up.dart';
-import 'package:kawalcovid19/widget/bottomnavbar/bottom_navy_bar.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:kawalcovid19/common/config.dart';
+import 'package:kawalcovid19/ui/home/home_page.dart';
 
 class DashBoardPage extends StatefulWidget {
 
@@ -13,78 +11,100 @@ class DashBoardPage extends StatefulWidget {
 
 class _DashBoardState extends State<DashBoardPage> {
 
+  PageController _pageController;
   int _page = 0;
-
-  final List<Widget> _list = [
-    Container(),
-    Container(),
-    Container()
-  ];
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        return showDialog(
-            barrierDismissible: false,
-            context: context,
-            builder: (BuildContext context) {
-              return PopUp(
-                content: "Are you sure want to exit?",
-                cancelText: "No",
-                acceptText: "Yes",
-                onTapCancel: () => Navigator.of(context).pop(),
-                onTapAccept: () => SystemNavigator.pop(),
-              );
-            }
-        );
-      },
-      child: Scaffold(
-        appBar: AppBar(),
-        bottomNavigationBar: BottomNavyBar(
-          selectedIndex: _page,
-          onItemSelected: onTapped,
-          items: [
-            BottomNavyBarItem(
-              icon: Icon(Icons.home),
-              title: Text(
-                'Home',
-                style: TextStyle(
-                  fontSize: Sizes.dp12(context),
-                ),
-              ),
-              activeColor: ColorPalettes.blueNavBar,
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(Config.appName),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.filter_list,
             ),
-            BottomNavyBarItem(
-              icon: Icon(Icons.library_books),
-              title: Text(
-                'Articles',
-                style: TextStyle(
-                  fontSize: Sizes.dp12(context),
-                ),
-              ),
-              activeColor: ColorPalettes.blueNavBar,
-            ),
-            BottomNavyBarItem(
-              icon: Icon(Icons.more_horiz),
-              title: Text(
-                'More',
-                style: TextStyle(
-                  fontSize: Sizes.dp12(context),
-                ),
-              ),
-              activeColor: ColorPalettes.blueNavBar,
-            ),
-          ],
-        ),
-        body: _list[_page],
+            onPressed: (){},
+          ),
+        ],
       ),
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        onPageChanged: onPageChanged,
+        children: <Widget>[
+          HomePage(),
+          Container(),
+          Container(),
+        ],
+      ),
+
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          // sets the background color of the `BottomNavigationBar`
+          canvasColor: Theme.of(context).primaryColor,
+          // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+          primaryColor: Theme.of(context).accentColor,
+          textTheme: Theme
+              .of(context)
+              .textTheme
+              .copyWith(caption: TextStyle(color: Colors.grey[500]),
+          ),
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                MaterialCommunityIcons.getIconData("home-variant-outline"),
+              ),
+              title: Container(height: 0.0),
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(
+                MaterialCommunityIcons.getIconData("library-books"),
+              ),
+              title: Container(height: 0.0),
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(
+                MaterialCommunityIcons.getIconData("menu"),
+              ),
+              title: Container(height: 0.0),
+            ),
+
+          ],
+          onTap: navigationTapped,
+          currentIndex: _page,
+        ),
+      ),
+
     );
   }
 
-  void onTapped(int index) {
+  void navigationTapped(int page) {
+    _pageController.jumpToPage(page);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: 0);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
+
+  void onPageChanged(int page) {
     setState(() {
-      _page = index;
+      this._page = page;
     });
   }
 
