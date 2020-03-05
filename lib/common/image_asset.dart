@@ -1,0 +1,2 @@
+// splash
+const String iconApps = "";
