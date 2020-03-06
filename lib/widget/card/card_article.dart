@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart';
 
 class CardArticle extends StatelessWidget {
-
   final String img;
   final String title;
   final String shortContent;
   final String date;
 
-  const CardArticle({Key key, this.img, this.title, this.shortContent, this.date}) : super(key: key);
+  const CardArticle(
+      {Key key, this.img, this.title, this.shortContent, this.date})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: 5.0, bottom: 5.0),
       child: Container(
-        height: MediaQuery.of(context).size.height/3.5,
-        width: MediaQuery.of(context).size.width,
         child: Card(
-          shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(10.0)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
           elevation: 3.0,
           child: Column(
             children: <Widget>[
@@ -25,7 +26,7 @@ class CardArticle extends StatelessWidget {
                 children: <Widget>[
                   // Image
                   Container(
-                    height: MediaQuery.of(context).size.height/5.5,
+                    height: MediaQuery.of(context).size.height / 5.5,
                     width: MediaQuery.of(context).size.width,
                     child: ClipRRect(
                       borderRadius: BorderRadius.only(
@@ -43,7 +44,8 @@ class CardArticle extends StatelessWidget {
                     top: 6.0,
                     right: 6.0,
                     child: Card(
-                      shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(4.0)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(4.0)),
                       child: Padding(
                         padding: EdgeInsets.all(2.0),
                         child: Text(
@@ -57,9 +59,7 @@ class CardArticle extends StatelessWidget {
                   ),
                 ],
               ),
-
               SizedBox(height: 7.0),
-
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
                 child: Container(
@@ -74,15 +74,13 @@ class CardArticle extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(height: 7.0),
-
               Padding(
                 padding: EdgeInsets.only(left: 15.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width,
                   child: Text(
-                    shortContent,
+                    parse(parse(shortContent).body.text).documentElement.text,
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w300,
@@ -90,9 +88,7 @@ class CardArticle extends StatelessWidget {
                   ),
                 ),
               ),
-
               SizedBox(height: 10.0),
-
             ],
           ),
         ),

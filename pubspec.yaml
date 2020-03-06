@@ -29,6 +29,7 @@ dependencies:
   equatable: ^1.1.1
   retrofit: any
   json_annotation:
+  intl: ^0.16.1
 
 dev_dependencies:
   flutter_test:

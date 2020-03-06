@@ -21,4 +21,11 @@ class PostsLoaded extends PostsState {
   List<Object> get props => [posts];
 }
 
-class PostsNotLoaded extends PostsState {}
+class PostsNotLoaded extends PostsState {
+  final String errorMessage;
+
+  PostsNotLoaded([this.errorMessage = ""]);
+
+  @override
+  List<Object> get props => [errorMessage];
+}
