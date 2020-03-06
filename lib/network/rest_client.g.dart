@@ -8,14 +8,37 @@ part of 'rest_client.dart';
 
 Post _$PostFromJson(Map<String, dynamic> json) {
   return Post(
-    json['id'] as String,
-    json['title'] as String,
+    json['id'] as int,
+    json['title'] == null
+        ? null
+        : Renderable.fromJson(json['title'] as Map<String, dynamic>),
+    json['excerpt'] == null
+        ? null
+        : Renderable.fromJson(json['excerpt'] as Map<String, dynamic>),
+    json['content'] == null
+        ? null
+        : Renderable.fromJson(json['content'] as Map<String, dynamic>),
+    json['date'] as String,
   );
 }
 
 Map<String, dynamic> _$PostToJson(Post instance) => <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
+      'excerpt': instance.excerpt,
+      'content': instance.content,
+      'date': instance.date,
+    };
+
+Renderable _$RenderableFromJson(Map<String, dynamic> json) {
+  return Renderable(
+    json['rendered'] as String,
+  );
+}
+
+Map<String, dynamic> _$RenderableToJson(Renderable instance) =>
+    <String, dynamic>{
+      'rendered': instance.rendered,
     };
 
 // **************************************************************************

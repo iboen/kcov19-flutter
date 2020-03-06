@@ -12,20 +12,36 @@ abstract class RestClient {
 
   @GET("/posts")
   Future<List<Post>> getPosts();
-
 }
 
 @JsonSerializable()
-class Post extends Equatable{
-  final String id;
-  final String title;
+class Post extends Equatable {
+  final int id;
+  final Renderable title;
+  final Renderable excerpt;
+  final Renderable content;
+  final String date;
 
-  Post(this.id, this.title);
+  Post(this.id, this.title, this.excerpt, this.content, this.date);
 
   @override
-  List<Object> get props =>  [id, title];
+  List<Object> get props => [id, excerpt, title, content, date];
 
   factory Post.fromJson(Map<String, dynamic> json) => _$PostFromJson(json);
-  Map<String, dynamic> toJson() => _$PostToJson(this);
 
+  Map<String, dynamic> toJson() => _$PostToJson(this);
+}
+
+@JsonSerializable()
+class Renderable extends Equatable {
+  final String rendered;
+
+  Renderable(this.rendered);
+
+  @override
+  List<Object> get props => [rendered];
+
+  factory Renderable.fromJson(Map<String, dynamic> json) => _$RenderableFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RenderableToJson(this);
 }

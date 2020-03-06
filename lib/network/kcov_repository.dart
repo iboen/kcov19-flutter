@@ -6,7 +6,13 @@ import 'package:kawalcovid19/network/rest_client.dart';
 class KcovRepository implements Repository {
   final ApiRepository api;
 
-  const KcovRepository({@required this.api});
+  static final KcovRepository _singleton = KcovRepository._internal(api: ApiRepository());
+
+  factory KcovRepository() {
+    return _singleton;
+  }
+
+  KcovRepository._internal({@required this.api});
 
   Future<List<Post>> getPosts() {
     return api.getPosts();
