@@ -20,12 +20,15 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
 
   Stream<PostsState> _mapLoadPostsToState() async* {
     try {
+      yield PostsLoading();
+
       // call api
       var posts = await repository.getPosts();
 
       yield PostsLoaded(posts);
     } catch (_) {
-      yield PostsNotLoaded();
+      print(_.toString());
+      yield PostsNotLoaded(_.toString());
     }
   }
 }

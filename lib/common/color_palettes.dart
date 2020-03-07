@@ -3,13 +3,51 @@ library color;
 import 'package:flutter/material.dart';
 
 class ColorPalettes{
-  /*
-  BLACK */
-  static Color black            = Color(0xFF000000);
 
-  /*
-  WHITE */
-  static Color white            = Color(0xFFFFFFFF);
+  //Colors for theme
+  static Color lightPrimary = Color(0xfffcfcff);
+  static Color darkPrimary = Colors.black;
+  static Color lightAccent = Colors.blue;
+  static Color darkAccent = Colors.blueAccent;
+  static Color lightBG = Color(0xfffcfcff);
+  static Color darkBG = Colors.black;
+  static Color badgeColor = Colors.red;
 
-  static Color blueNavBar       = Color(0xFF0096fe);
+  static ThemeData lightTheme = ThemeData(
+    backgroundColor: lightBG,
+    primaryColor: lightPrimary,
+    accentColor:  lightAccent,
+    cursorColor: lightAccent,
+    scaffoldBackgroundColor: lightBG,
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      textTheme: TextTheme(
+        title: TextStyle(
+          color: darkBG,
+          fontSize: 18.0,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+    ),
+  );
+
+  static ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    backgroundColor: darkBG,
+    primaryColor: darkPrimary,
+    accentColor: darkAccent,
+    scaffoldBackgroundColor: darkBG,
+    cursorColor: darkAccent,
+    appBarTheme: AppBarTheme(
+      elevation: 0,
+      textTheme: TextTheme(
+        title: TextStyle(
+          color: lightBG,
+          fontSize: 18.0,
+          fontWeight: FontWeight.w800,
+        ),
+      ),
+    ),
+  );
+
 }
