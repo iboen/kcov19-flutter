@@ -14,4 +14,9 @@ class ApiRepository implements Repository {
   Future<List<Post>> getPosts() {
     return client.getPosts();
   }
+
+  @override
+  Future<Post> getFaq() {
+    return client.getFaq();
+  }
 }

@@ -12,6 +12,9 @@ abstract class RestClient {
 
   @GET("/posts")
   Future<List<Post>> getPosts();
+
+  @GET("/posts/2")
+  Future<Post> getFaq();
 }
 
 @JsonSerializable()

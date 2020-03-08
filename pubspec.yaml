@@ -31,6 +31,7 @@ dependencies:
   json_annotation:
   intl: ^0.16.1
   url_launcher: ^5.4.2
+  flutter_html: ^0.11.1
 
 dev_dependencies:
   flutter_test:

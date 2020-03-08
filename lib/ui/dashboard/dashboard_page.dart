@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:kawalcovid19/blocs/faq/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/kcov_repository.dart';
@@ -42,7 +43,12 @@ class _DashBoardState extends State<DashBoardPage> {
             },
             child: HomePage(),
           ),
-          FAQPage(),
+          BlocProvider(
+            create: (context) {
+              return FaqBloc(KcovRepository());
+            },
+            child: FAQPage(),
+          ),
           Container(),
         ],
       ),
