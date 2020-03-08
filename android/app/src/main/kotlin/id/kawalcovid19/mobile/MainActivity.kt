@@ -1,4 +1,4 @@
-package com.mobile.kawalcovid19
+package id.kawalcovid19.mobile
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
