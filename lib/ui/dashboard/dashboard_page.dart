@@ -7,6 +7,7 @@ import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:kawalcovid19/network/kcov_repository.dart';
 import 'package:kawalcovid19/ui/faq/faq_page.dart';
 import 'package:kawalcovid19/ui/home/home_page.dart';
+import 'package:kawalcovid19/ui/more/more_page.dart';
 import 'package:kawalcovid19/widget/alert/pop_up.dart';
 
 class DashBoardPage extends StatefulWidget {
@@ -66,7 +67,7 @@ class _DashBoardState extends State<DashBoardPage> {
               },
               child: FAQPage(),
             ),
-            Container(),
+            MorePage(),
           ],
         ),
         bottomNavigationBar: Theme(
