@@ -18,6 +18,7 @@ class ColorPalettes{
     primaryColor: lightPrimary,
     accentColor:  lightAccent,
     cursorColor: lightAccent,
+    dividerColor: darkBG,
     scaffoldBackgroundColor: lightBG,
     appBarTheme: AppBarTheme(
       elevation: 0,
@@ -36,6 +37,7 @@ class ColorPalettes{
     backgroundColor: darkBG,
     primaryColor: darkPrimary,
     accentColor: darkAccent,
+    dividerColor: lightPrimary,
     scaffoldBackgroundColor: darkBG,
     cursorColor: darkAccent,
     appBarTheme: AppBarTheme(

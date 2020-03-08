@@ -30,6 +30,8 @@ dependencies:
   retrofit: any
   json_annotation:
   intl: ^0.16.1
+  url_launcher: ^5.4.2
+  flutter_html: ^0.11.1
 
 dev_dependencies:
   flutter_test:
@@ -51,8 +53,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+    - images/faq/faq_sample.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

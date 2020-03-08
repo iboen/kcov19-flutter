@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:kawalcovid19/blocs/faq/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
-import 'package:kawalcovid19/common/config.dart';
-import 'package:kawalcovid19/network/api_repository.dart';
+import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/kcov_repository.dart';
-import 'package:kawalcovid19/network/repository.dart';
+import 'package:kawalcovid19/ui/faq/faq_page.dart';
 import 'package:kawalcovid19/ui/home/home_page.dart';
 
 class DashBoardPage extends StatefulWidget {
@@ -21,7 +21,7 @@ class _DashBoardState extends State<DashBoardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Config.appName),
+        title: Text(AppConstant.appName),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
@@ -43,7 +43,12 @@ class _DashBoardState extends State<DashBoardPage> {
             },
             child: HomePage(),
           ),
-          Container(),
+          BlocProvider(
+            create: (context) {
+              return FaqBloc(KcovRepository());
+            },
+            child: FAQPage(),
+          ),
           Container(),
         ],
       ),
