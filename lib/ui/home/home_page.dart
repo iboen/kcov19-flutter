@@ -45,8 +45,6 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (BuildContext context, int index) {
                       Post post = state.posts[index];
                       return CardArticle(
-                        img:
-                            "https://awsimages.detik.net.id/api/wm/2020/03/05/71372c6f-3dc5-485b-bb78-823bd6b36363_169.jpeg?wid=54&w=650&v=1&t=jpeg",
                         title: post.title.rendered,
                         shortContent: post.excerpt.rendered,
                         date: post.date,

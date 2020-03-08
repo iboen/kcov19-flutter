@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 import 'package:kawalcovid19/blocs/faq/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
@@ -67,19 +66,19 @@ class _DashBoardState extends State<DashBoardPage> {
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(
-                MaterialCommunityIcons.getIconData("home-variant-outline"),
+                Icons.home,
               ),
               title: Container(height: 0.0),
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                MaterialCommunityIcons.getIconData("library-books"),
+                Icons.question_answer,
               ),
               title: Container(height: 0.0),
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                MaterialCommunityIcons.getIconData("menu"),
+                Icons.more_horiz,
               ),
               title: Container(height: 0.0),
             ),

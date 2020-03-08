@@ -70,7 +70,7 @@ class _FAQPageState extends State<FAQPage> {
                             ),
                             SizedBox(height: Sizes.dp8(context)),
                             Html(
-                              onImageTap: (src) {
+                              onLinkTap: (src) {
                                 _launchURL(src);
                               },
                               data: state.post.content.rendered,

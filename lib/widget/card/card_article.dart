@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
-import 'package:kawalcovid19/common/color_palettes.dart';
 import 'package:kawalcovid19/common/sizes.dart';
 import 'package:intl/intl.dart';
 
 class CardArticle extends StatelessWidget {
-  final String img;
   final String title;
   final String shortContent;
   final String date;
 
-  const CardArticle(
-      {Key key, this.img, this.title, this.shortContent, this.date})
+  const CardArticle({Key key, this.title, this.shortContent, this.date})
       : super(key: key);
 
   @override
@@ -38,7 +35,9 @@ class CardArticle extends StatelessWidget {
                       Text(
                         DateFormat("dd").format(DateTime.parse(date)),
                         style: TextStyle(
-                            color: Theme.of(context).backgroundColor, fontSize: Sizes.dp20(context), fontWeight: FontWeight.w500),
+                            color: Theme.of(context).backgroundColor,
+                            fontSize: Sizes.dp20(context),
+                            fontWeight: FontWeight.w500),
                       ),
                       Text(
                         DateFormat("MMM")
