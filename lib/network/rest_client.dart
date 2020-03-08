@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:kawalcovid19/const/app_constant.dart';
+import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart' hide Headers;
 

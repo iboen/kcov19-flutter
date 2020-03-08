@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/common/color_palettes.dart';
-import 'package:kawalcovid19/const/app_constant.dart';
+import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:kawalcovid19/ui/dashboard/dashboard_page.dart';
 import 'package:kawalcovid19/blocs/SimpleBlocDelegate.dart';
+import 'package:kawalcovid19/ui/home/detail_article.dart';
 
 void main() async{
   // BlocSupervisor oversees Blocs and delegates to BlocDelegate.
@@ -40,7 +41,11 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: AppConstant.appName,
       theme: isDark ? ColorPalettes.darkTheme : ColorPalettes.lightTheme,
-      home: DashBoardPage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => DashBoardPage(),
+        DetailArticle.routeName: (context) => DetailArticle(),
+      },
     );
   }
 }
