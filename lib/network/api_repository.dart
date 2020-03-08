@@ -19,4 +19,14 @@ class ApiRepository implements Repository {
   Future<Post> getFaq() {
     return client.getFaq();
   }
+
+  @override
+  Future<bool> savePosts(List<Post> posts) {
+    return Future.value(false);
+  }
+
+  @override
+  Future<bool> saveFaq(Post faq) {
+    return Future.value(false);
+  }
 }

@@ -88,7 +88,7 @@ class _FAQPageState extends State<FAQPage> {
           } else if (state is FaqNotLoaded) {
             return Center(child: Text(state.errorMessage));
           } else {
-            return Center(child: Text("Ada kesalahan"));
+            return Center(child: Text(""));
           }
         }));
   }
