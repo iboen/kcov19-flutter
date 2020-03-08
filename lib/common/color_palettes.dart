@@ -12,6 +12,8 @@ class ColorPalettes{
   static Color lightBG = Color(0xfffcfcff);
   static Color darkBG = Colors.black;
   static Color badgeColor = Colors.red;
+  static Color orange = Colors.orange;
+  static Color green = Colors.green;
 
   static ThemeData lightTheme = ThemeData(
     backgroundColor: lightBG,
