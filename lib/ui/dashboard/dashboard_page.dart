@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/faq/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
-import 'package:kawalcovid19/const/app_constant.dart';
+import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:kawalcovid19/network/kcov_repository.dart';
 import 'package:kawalcovid19/ui/faq/faq_page.dart';
 import 'package:kawalcovid19/ui/home/home_page.dart';

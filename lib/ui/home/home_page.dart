@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
+import 'package:kawalcovid19/common/navigation.dart';
+import 'package:kawalcovid19/common/screen_arguments.dart';
 import 'package:kawalcovid19/network/rest_client.dart';
+import 'package:kawalcovid19/ui/home/detail_article.dart';
 import 'package:kawalcovid19/widget/card/card_article.dart';
 
 class HomePage extends StatefulWidget {
@@ -48,6 +51,17 @@ class _HomePageState extends State<HomePage> {
                         title: post.title.rendered,
                         shortContent: post.excerpt.rendered,
                         date: post.date,
+                        onTap: () {
+                          Navigation.intentWithData(
+                            context,
+                            DetailArticle.routeName,
+                            ScreenArguments(
+                              post.title.rendered,
+                              post.excerpt.rendered,
+                              post.content.rendered,
+                            ),
+                          );
+                        },
                       );
                     },
                   ),
