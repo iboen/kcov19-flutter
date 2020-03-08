@@ -33,52 +33,43 @@ class _FAQPageState extends State<FAQPage> {
           if (state is FaqLoaded) {
             return ListView(
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.all(Sizes.dp16(context)),
-                  child: Container(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: Sizes.dp16(context),
-                          horizontal: Sizes.dp16(context)),
-                      child: Container(
-                        width: Sizes.width(context),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              state.post.title.rendered,
-                              style: TextStyle(
-                                fontSize: Sizes.dp20(context),
-                                fontWeight: FontWeight.w800,
-                              ),
-                              textAlign: TextAlign.left,
-                            ),
-                            SizedBox(height: Sizes.dp6(context)),
-                            Text(
-                              parse(
-                                  parse(state.post.excerpt.rendered).body.text)
-                                  .documentElement
-                                  .text,
-                              style: TextStyle(
-                                fontSize: Sizes.dp14(context),
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            SizedBox(height: Sizes.dp8(context)),
-                            Divider(
-                              height: Sizes.dp10(context),
-                            ),
-                            SizedBox(height: Sizes.dp8(context)),
-                            Html(
-                              onLinkTap: (src) {
-                                _launchURL(src);
-                              },
-                              data: state.post.content.rendered,
-                            ),
-                          ],
+                Container(
+                  padding: EdgeInsets.fromLTRB(10.0, 0, 10.0, 0),
+                  width: Sizes.width(context),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        state.post.title.rendered,
+                        style: TextStyle(
+                          fontSize: Sizes.dp20(context),
+                          fontWeight: FontWeight.w800,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
+                      SizedBox(height: Sizes.dp6(context)),
+                      Text(
+                        parse(
+                            parse(state.post.excerpt.rendered).body.text)
+                            .documentElement
+                            .text,
+                        style: TextStyle(
+                          fontSize: Sizes.dp14(context),
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                    ),
+                      SizedBox(height: Sizes.dp8(context)),
+                      Divider(
+                        height: Sizes.dp10(context),
+                      ),
+                      SizedBox(height: Sizes.dp8(context)),
+                      Html(
+                        onLinkTap: (src) {
+                          _launchURL(src);
+                        },
+                        data: state.post.content.rendered,
+                      ),
+                    ],
                   ),
                 ),
               ],
