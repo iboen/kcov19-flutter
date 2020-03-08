@@ -73,4 +73,22 @@ class _RestClient implements RestClient {
         .toList();
     return Future.value(value);
   }
+
+  @override
+  getFaq() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<Map<String, dynamic>> _result = await _dio.request(
+        '/posts/2',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    final value = Post.fromJson(_result.data);
+    return Future.value(value);
+  }
 }
