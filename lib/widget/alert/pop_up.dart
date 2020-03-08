@@ -16,26 +16,17 @@ class PopUp extends StatelessWidget {
       ),
       content: Text(
         content,
-        style: TextStyle(
-            color: Colors.black,
-            fontSize: Sizes.dp14(context)),
       ),
       actions: <Widget>[
         FlatButton(
           child: Text(
             cancelText,
-            style: TextStyle(
-                color: Colors.red,
-                fontSize: Sizes.dp14(context)),
           ),
           onPressed: onTapCancel,
         ),
         FlatButton(
           child: Text(
             acceptText,
-            style: TextStyle(
-                color: Colors.red,
-                fontSize: Sizes.dp14(context)),
           ),
           onPressed: onTapAccept,
         ),
