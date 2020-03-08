@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/network/rest_client.dart';
 import 'package:kawalcovid19/widget/card/card_article.dart';
@@ -50,8 +49,7 @@ class _HomePageState extends State<HomePage> {
                             "https://awsimages.detik.net.id/api/wm/2020/03/05/71372c6f-3dc5-485b-bb78-823bd6b36363_169.jpeg?wid=54&w=650&v=1&t=jpeg",
                         title: post.title.rendered,
                         shortContent: post.excerpt.rendered,
-                        date: DateFormat("dd MMM yyyy")
-                            .format(DateTime.parse(post.date)),
+                        date: post.date,
                       );
                     },
                   ),

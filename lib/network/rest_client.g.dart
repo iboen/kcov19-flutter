@@ -6,6 +6,20 @@ part of 'rest_client.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Category _$CategoryFromJson(Map<String, dynamic> json) {
+  return Category(
+    json['id'] as int,
+    json['description'] as String,
+    json['name'] as String,
+  );
+}
+
+Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
+      'id': instance.id,
+      'description': instance.description,
+      'name': instance.name,
+    };
+
 Post _$PostFromJson(Map<String, dynamic> json) {
   return Post(
     json['id'] as int,
@@ -48,7 +62,7 @@ Map<String, dynamic> _$RenderableToJson(Renderable instance) =>
 class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    this.baseUrl ??= 'http://demo5353862.mockable.io/';
+    this.baseUrl ??= 'https://kawalcovid19-wp.herokuapp.com/wp/wp-json/wp/v2/';
   }
 
   final Dio _dio;
@@ -56,9 +70,48 @@ class _RestClient implements RestClient {
   String baseUrl;
 
   @override
+  getCategories() async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<List<dynamic>> _result = await _dio.request('/categories',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    var value = _result.data
+        .map((dynamic i) => Category.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return Future.value(value);
+  }
+
+  @override
   getPosts() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final Response<List<dynamic>> _result = await _dio.request('/posts',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'GET',
+            headers: <String, dynamic>{},
+            extra: _extra,
+            baseUrl: baseUrl),
+        data: _data);
+    var value = _result.data
+        .map((dynamic i) => Post.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return Future.value(value);
+  }
+
+  @override
+  getPostsByCategory(category) async {
+    ArgumentError.checkNotNull(category, 'category');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{'categories': category};
     final _data = <String, dynamic>{};
     final Response<List<dynamic>> _result = await _dio.request('/posts',
         queryParameters: queryParameters,

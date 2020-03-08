@@ -10,11 +10,33 @@ part 'rest_client.g.dart';
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
+  @GET("/categories")
+  Future<List<Category>> getCategories();
+
   @GET("/posts")
   Future<List<Post>> getPosts();
 
+  @GET("/posts")
+  Future<List<Post>> getPostsByCategory(@Query("categories") String category);
+
   @GET("/posts/2")
   Future<Post> getFaq();
+}
+
+@JsonSerializable()
+class Category extends Equatable {
+  final int id;
+  final String description;
+  final String name;
+
+  Category(this.id, this.description, this.name);
+
+  @override
+  List<Object> get props => throw UnimplementedError();
+
+  factory Category.fromJson(Map<String, dynamic> json) => _$CategoryFromJson(json);
+
+  Map<String, dynamic> toJson() => _$CategoryToJson(this);
 }
 
 @JsonSerializable()
@@ -44,7 +66,8 @@ class Renderable extends Equatable {
   @override
   List<Object> get props => [rendered];
 
-  factory Renderable.fromJson(Map<String, dynamic> json) => _$RenderableFromJson(json);
+  factory Renderable.fromJson(Map<String, dynamic> json) =>
+      _$RenderableFromJson(json);
 
   Map<String, dynamic> toJson() => _$RenderableToJson(this);
 }
