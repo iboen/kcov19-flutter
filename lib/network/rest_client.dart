@@ -24,6 +24,31 @@ abstract class RestClient {
 
   @GET("https://kawalcovid19.harippe.id/api/summary")
   Future<Statistics> getStatistics();
+
+  @GET("https://kawalcovid19.harippe.id/api/raw")
+  Future<List<ListConfirmed>> getListConfirmed();
+}
+
+@JsonSerializable()
+class ListConfirmed extends Equatable {
+
+  final String caseId;
+  final int age;
+  final String gender;
+  final String city;
+  final String province;
+  final String firstContactAt;
+  final String hospitalizedIn;
+  final String notes;
+
+  ListConfirmed(this.caseId, this.age, this.gender, this.city, this.province, this.firstContactAt, this.hospitalizedIn, this.notes);
+
+  @override
+  List<Object> get props => [caseId, age, gender, city, province, firstContactAt, hospitalizedIn, notes];
+
+  factory ListConfirmed.fromJson(Map<String, dynamic> json) => _$ListConfirmedFromJson(json);
+  Map<String, dynamic> toJson() => _$ListConfirmedToJson(this);
+
 }
 
 @JsonSerializable()

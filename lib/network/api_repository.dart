@@ -11,6 +11,7 @@ class ApiRepository implements Repository {
     client = RestClient(dio);
   }
 
+  @override
   Future<List<Post>> getPosts() {
     return client.getPosts();
   }
@@ -38,6 +39,16 @@ class ApiRepository implements Repository {
   @override
   Future<Statistics> getStatistics() {
     return client.getStatistics();
+  }
+
+  @override
+  Future<List<ListConfirmed>> getListConfirmed() {
+    return client.getListConfirmed();
+  }
+
+  @override
+  Future<bool> saveListConfirmed(List<ListConfirmed> listConfirmed) {
+    return Future.value(false);
   }
 
 }

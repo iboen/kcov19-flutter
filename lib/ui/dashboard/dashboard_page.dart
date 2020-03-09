@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kawalcovid19/blocs/confirmed/confirmed_bloc.dart';
 import 'package:kawalcovid19/blocs/faq/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/blocs/statistics/statistics_bloc.dart';
@@ -36,8 +37,7 @@ class _DashBoardState extends State<DashBoardPage> {
                 onTapCancel: () => Navigator.of(context).pop(),
                 onTapAccept: () => SystemNavigator.pop(),
               );
-            }
-        );
+            });
       },
       child: Scaffold(
         appBar: AppBar(
@@ -69,10 +69,19 @@ class _DashBoardState extends State<DashBoardPage> {
               },
               child: FAQPage(),
             ),
-            BlocProvider(
-              create: (context) {
-                return StatisticsBloc(KcovRepository());
-              },
+            MultiBlocProvider(
+              providers: [
+                BlocProvider<StatisticsBloc>(
+                  create: (context) {
+                    return StatisticsBloc(KcovRepository());
+                  },
+                ),
+                BlocProvider<ConfirmedBloc>(
+                  create: (context) {
+                    return ConfirmedBloc(KcovRepository());
+                  },
+                ),
+              ],
               child: StatisticsPage(),
             ),
             MorePage(),
