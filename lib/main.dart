@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/common/color_palettes.dart';
+import 'package:kawalcovid19/common/firebase_notification_handler.dart';
 import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:kawalcovid19/ui/dashboard/dashboard_page.dart';
 import 'package:kawalcovid19/blocs/SimpleBlocDelegate.dart';
@@ -33,6 +34,8 @@ class _MyAppState extends State<MyApp> {
       statusBarColor: isDark ? ColorPalettes.darkPrimary : ColorPalettes.lightPrimary,
       statusBarIconBrightness: isDark?Brightness.light:Brightness.dark,
     ));
+    // Check the default of FCM
+    new FirebaseNotifications().setUpFirebase();
   }
 
   @override
