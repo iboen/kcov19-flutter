@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kawalcovid19/blocs/confirmed/confirmed_bloc.dart';
 import 'package:kawalcovid19/blocs/faq/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
+import 'package:kawalcovid19/blocs/statistics/statistics_bloc.dart';
 import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:kawalcovid19/network/kcov_repository.dart';
 import 'package:kawalcovid19/ui/faq/faq_page.dart';
 import 'package:kawalcovid19/ui/home/home_page.dart';
 import 'package:kawalcovid19/ui/more/more_page.dart';
+import 'package:kawalcovid19/ui/statistics/statistics_page.dart';
 import 'package:kawalcovid19/widget/alert/pop_up.dart';
 
 class DashBoardPage extends StatefulWidget {
@@ -34,8 +37,7 @@ class _DashBoardState extends State<DashBoardPage> {
                 onTapCancel: () => Navigator.of(context).pop(),
                 onTapAccept: () => SystemNavigator.pop(),
               );
-            }
-        );
+            });
       },
       child: Scaffold(
         appBar: AppBar(
@@ -67,6 +69,21 @@ class _DashBoardState extends State<DashBoardPage> {
               },
               child: FAQPage(),
             ),
+            MultiBlocProvider(
+              providers: [
+                BlocProvider<StatisticsBloc>(
+                  create: (context) {
+                    return StatisticsBloc(KcovRepository());
+                  },
+                ),
+                BlocProvider<ConfirmedBloc>(
+                  create: (context) {
+                    return ConfirmedBloc(KcovRepository());
+                  },
+                ),
+              ],
+              child: StatisticsPage(),
+            ),
             MorePage(),
           ],
         ),
@@ -92,6 +109,12 @@ class _DashBoardState extends State<DashBoardPage> {
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.question_answer,
+                ),
+                title: Container(height: 0.0),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.show_chart,
                 ),
                 title: Container(height: 0.0),
               ),
