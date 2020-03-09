@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/confirmed/bloc.dart';
 import 'package:kawalcovid19/blocs/statistics/bloc.dart';
 import 'package:kawalcovid19/common/sizes.dart';
-import 'package:kawalcovid19/network/rest_client.dart';
+import 'package:kawalcovid19/network/api/rest_client.dart';
 import 'package:kawalcovid19/widget/card/card_detail_statistics.dart';
 import 'package:kawalcovid19/widget/card/card_statistics.dart';
 

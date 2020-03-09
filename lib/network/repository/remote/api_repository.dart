@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:kawalcovid19/network/repository.dart';
-import 'package:kawalcovid19/network/rest_client.dart';
+import 'package:kawalcovid19/network/repository/repository.dart';
+import 'package:kawalcovid19/network/api/rest_client.dart';
 
 class ApiRepository implements Repository {
   Dio dio;

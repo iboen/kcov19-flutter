@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/post/bloc.dart';
 import 'package:kawalcovid19/common/color_palettes.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
-import 'package:kawalcovid19/network/kcov_repository.dart';
+import 'package:kawalcovid19/network/repository/kcov_repository.dart';
 import 'package:kawalcovid19/ui/about/about_page.dart';
 import 'package:kawalcovid19/ui/dashboard/dashboard_page.dart';
 import 'package:kawalcovid19/blocs/SimpleBlocDelegate.dart';

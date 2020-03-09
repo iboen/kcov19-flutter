@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:kawalcovid19/blocs/confirmed/bloc.dart';
-import 'package:kawalcovid19/network/repository.dart';
+import 'package:kawalcovid19/network/repository/repository.dart';
 
 class ConfirmedBloc extends Bloc<ConfirmedEvent, ConfirmedState> {
 
