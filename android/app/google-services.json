@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "941383176247",
+    "firebase_url": "https://kawalcovid19-dev.firebaseio.com",
+    "project_id": "kawalcovid19-dev",
+    "storage_bucket": "kawalcovid19-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941383176247:android:1ee06bec68646e7a18afb2",
+        "android_client_info": {
+          "package_name": "id.kawalcovid19.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941383176247-cttr17l1rkfs4t5avq27fgve39u3u1h7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZkAFklxjdEnQj-2G13md_diW8-kVxfiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941383176247-cttr17l1rkfs4t5avq27fgve39u3u1h7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
