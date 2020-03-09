@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:kawalcovid19/const/app_constant.example.dart';
-import 'package:kawalcovid19/network/api_repository.dart';
-import 'package:kawalcovid19/network/local_repository.dart';
-import 'package:kawalcovid19/network/repository.dart';
-import 'package:kawalcovid19/network/rest_client.dart';
+import 'package:kawalcovid19/network/repository/remote/api_repository.dart';
+import 'package:kawalcovid19/network/repository/local/local_repository.dart';
+import 'package:kawalcovid19/network/repository/repository.dart';
+import 'package:kawalcovid19/network/api/rest_client.dart';
 
 class KcovRepository implements Repository {
 

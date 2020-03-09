@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/common/navigation.dart';
 import 'package:kawalcovid19/common/screen_arguments.dart';
-import 'package:kawalcovid19/network/rest_client.dart';
+import 'package:kawalcovid19/network/api/rest_client.dart';
 import 'package:kawalcovid19/ui/home/detail_article.dart';
 import 'package:kawalcovid19/widget/card/card_article.dart';
 

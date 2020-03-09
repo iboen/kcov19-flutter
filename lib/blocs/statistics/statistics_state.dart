@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:kawalcovid19/network/rest_client.dart';
+import 'package:kawalcovid19/network/api/rest_client.dart';
 
 abstract class StatisticsState extends Equatable {
   const StatisticsState();
