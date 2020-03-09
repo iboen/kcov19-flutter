@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:kawalcovid19/const/app_constant.example.dart';
+import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/api_repository.dart';
 import 'package:kawalcovid19/network/local_repository.dart';
 import 'package:kawalcovid19/network/repository.dart';
@@ -60,13 +60,28 @@ class KcovRepository implements Repository {
   }
 
   @override
-  Future<bool> savePosts(List<Post> posts) {
-    return local.savePosts(posts);
+  Future<Post> getAbout() async {
+    try {
+      // check last update, if more than an hour, get from API
+      if ((DateTime.now().millisecondsSinceEpoch -
+          await local.getLastUpdate(AppConstant.LAST_UPDATE_ABOUT)) /
+          1000 <
+          3600) {
+        return await local.getAbout();
+      } else {
+        throw Exception();
+      }
+    } catch (_) {
+      final about = await api.getAbout();
+      await local.saveAbout(about);
+      await local.saveLastUpdate(AppConstant.LAST_UPDATE_ABOUT);
+      return about;
+    }
   }
 
   @override
-  Future<bool> saveFaq(Post faq) {
-    return local.saveFaq(faq);
+  Future<bool> savePosts(List<Post> posts) {
+    return local.savePosts(posts);
   }
 
   @override

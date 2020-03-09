@@ -4,17 +4,11 @@ abstract class Repository {
 
   Future<List<Post>> getPosts();
 
-  Future<bool> savePosts(List<Post> posts);
-
   Future<Post> getFaq();
 
-  Future<bool> saveFaq(Post faq);
+  Future<Post> getAbout();
 
   Future<Statistics> getStatistics();
 
-  Future<bool> saveStatistics(Statistics statistics);
-
   Future<List<ListConfirmed>> getListConfirmed();
-
-  Future<bool> saveListConfirmed(List<ListConfirmed> listConfirmed);
 }

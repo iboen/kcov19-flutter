@@ -1,30 +1,30 @@
 import 'package:equatable/equatable.dart';
 import 'package:kawalcovid19/network/rest_client.dart';
 
-abstract class FaqState extends Equatable {
-  const FaqState();
+abstract class PostState extends Equatable {
+  const PostState();
 
   @override
   List<Object> get props => [];
 }
 
-class InitialFaqState extends FaqState {}
+class InitialPostState extends PostState {}
 
-class FaqLoading extends FaqState {}
+class PostLoading extends PostState {}
 
-class FaqLoaded extends FaqState {
+class PostLoaded extends PostState {
   final Post post;
 
-  const FaqLoaded(this.post);
+  const PostLoaded(this.post);
 
   @override
   List<Object> get props => [post];
 }
 
-class FaqNotLoaded extends FaqState {
+class PostNotLoaded extends PostState {
   final String errorMessage;
 
-  FaqNotLoaded([this.errorMessage = ""]);
+  PostNotLoaded([this.errorMessage = ""]);
 
   @override
   List<Object> get props => [errorMessage];

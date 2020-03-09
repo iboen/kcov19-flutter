@@ -22,37 +22,38 @@ class _StatisticsPageState extends State<StatisticsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverList(
-            delegate: SliverChildListDelegate([
-              BlocBuilder<StatisticsBloc, StatisticsState>(
-                builder: (context, state) {
-                  if (state is StatisticsLoaded) {
-                    return CardStatistics(
-                      confirmed: state.statistics.confirmed.value,
-                      recovered: state.statistics.recovered.value,
-                      deaths: state.statistics.deaths.value,
-                      lastUpdatedAt: state.statistics.metadata.lastUpdatedAt,
-                    );
-                  } else if (state is StatisticsLoading) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (state is StatisticsNotLoaded) {
-                    return Center(child: Text(state.errorMessage));
-                  } else {
-                    return Center(child: Text(""));
-                  }
-                },
-              ),
-              SizedBox(
-                height: Sizes.dp25(context),
-              ),
-            ]),
-          ),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Text(
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverList(
+          delegate: SliverChildListDelegate([
+            BlocBuilder<StatisticsBloc, StatisticsState>(
+              builder: (context, state) {
+                if (state is StatisticsLoaded) {
+                  return CardStatistics(
+                    confirmed: state.statistics.confirmed.value,
+                    recovered: state.statistics.recovered.value,
+                    deaths: state.statistics.deaths.value,
+                    lastUpdatedAt: state.statistics.metadata.lastUpdatedAt,
+                  );
+                } else if (state is StatisticsLoading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state is StatisticsNotLoaded) {
+                  return Center(child: Text(state.errorMessage));
+                } else {
+                  return Center(child: Text(""));
+                }
+              },
+            ),
+            SizedBox(
+              height: Sizes.dp25(context),
+            ),
+          ]),
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate([
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
                 "Detail Kasus Lengkap",
                 style: TextStyle(
                   fontSize: Sizes.dp20(context),
@@ -60,43 +61,43 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 ),
                 textAlign: TextAlign.left,
               ),
-              SizedBox(
-                height: Sizes.dp10(context),
-              ),
-              BlocBuilder<ConfirmedBloc, ConfirmedState>(
-                builder: (context, state) {
-                  if (state is ConfirmedLoaded) {
-                    return ListView.builder(
-                      primary: false,
-                      shrinkWrap: true,
-                      itemCount: state.confirmed == null ? 0 : state.confirmed.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        ListConfirmed listConfirmed = state.confirmed[index];
-                        return CardDetailStatistics(
-                          caseId: listConfirmed.caseId,
-                          age: listConfirmed.age,
-                          gender: listConfirmed.gender,
-                          city: listConfirmed.city,
-                          province: listConfirmed.province,
-                          hospitalizedIn: listConfirmed.hospitalizedIn,
-                          notes: listConfirmed.notes,
-                        );
-                      },
-                    );
-                  } else if (state is ConfirmedLoading) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (state is ConfirmedNotLoaded) {
-                    return Center(child: Text(state.errorMessage));
-                  } else {
-                    return Center(child: Text(""));
-                  }
-                },
-              ),
-            ]),
-          ),
-        ],
-      ),
+            ),
+            SizedBox(
+              height: Sizes.dp8(context),
+            ),
+            BlocBuilder<ConfirmedBloc, ConfirmedState>(
+              builder: (context, state) {
+                if (state is ConfirmedLoaded) {
+                  return ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemCount:
+                        state.confirmed == null ? 0 : state.confirmed.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      ListConfirmed listConfirmed = state.confirmed[index];
+                      return CardDetailStatistics(
+                        caseId: listConfirmed.caseId,
+                        age: listConfirmed.age,
+                        gender: listConfirmed.gender,
+                        city: listConfirmed.city,
+                        province: listConfirmed.province,
+                        hospitalizedIn: listConfirmed.hospitalizedIn,
+                        notes: listConfirmed.notes,
+                      );
+                    },
+                  );
+                } else if (state is ConfirmedLoading) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state is ConfirmedNotLoaded) {
+                  return Center(child: Text(state.errorMessage));
+                } else {
+                  return Center(child: Text(""));
+                }
+              },
+            ),
+          ]),
+        ),
+      ],
     );
   }
-
 }

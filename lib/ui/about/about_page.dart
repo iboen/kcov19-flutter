@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:kawalcovid19/common/screen_arguments.dart';
+import 'package:kawalcovid19/blocs/post/bloc.dart';
 import 'package:kawalcovid19/common/sizes.dart';
-
 import 'package:html/parser.dart';
-import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class DetailArticle extends StatelessWidget {
+class AboutPage extends StatefulWidget {
+  static const routeName = '/about';
 
-  static const routeName = '/detail_screen';
+  @override
+  _AboutPageState createState() => _AboutPageState();
+}
 
+class _AboutPageState extends State<AboutPage> {
   _launchURL(url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -20,29 +23,30 @@ class DetailArticle extends StatelessWidget {
   }
 
   @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<PostBloc>(context).add(LoadAbout());
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppConstant.appName),
-        centerTitle: true,
-      ),
-      body: ListView(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(Sizes.dp16(context)),
-            child: Container(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: Sizes.dp16(context),
-                    horizontal: Sizes.dp16(context)),
-                child: Container(
+        appBar: AppBar(
+          title: Text("Tentang KawalCOVID19"),
+          centerTitle: true,
+        ),
+        body: BlocBuilder<PostBloc, PostState>(builder: (context, state) {
+          if (state is PostLoaded) {
+            return ListView(
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(16.0),
                   width: Sizes.width(context),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        args.title,
+                        state.post.title.rendered,
                         style: TextStyle(
                           fontSize: Sizes.dp24(context),
                           fontWeight: FontWeight.w800,
@@ -51,15 +55,15 @@ class DetailArticle extends StatelessWidget {
                       ),
                       SizedBox(height: Sizes.dp6(context)),
                       Text(
-                        parse(
-                            parse(args.message).body.text)
+                        parse(parse(state.post.excerpt.rendered).body.text)
                             .documentElement
-                            .text.trim(),
+                            .text
+                            .trim(),
                         style: TextStyle(
                           fontSize: Sizes.dp18(context),
                         ),
                       ),
-                      SizedBox(height: Sizes.dp8(context)),
+                      SizedBox(height: Sizes.dp16(context)),
                       Divider(
                         height: Sizes.dp10(context),
                       ),
@@ -68,16 +72,20 @@ class DetailArticle extends StatelessWidget {
                         onLinkTap: (src) {
                           _launchURL(src);
                         },
-                        data: args.content,
+                        data: state.post.content.rendered,
                       ),
                     ],
                   ),
                 ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+              ],
+            );
+          } else if (state is PostLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (state is PostNotLoaded) {
+            return Center(child: Text(state.errorMessage));
+          } else {
+            return Center(child: Text(""));
+          }
+        }));
   }
 }

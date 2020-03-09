@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/confirmed/confirmed_bloc.dart';
-import 'package:kawalcovid19/blocs/faq/bloc.dart';
+import 'package:kawalcovid19/blocs/post/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/blocs/statistics/statistics_bloc.dart';
-import 'package:kawalcovid19/const/app_constant.example.dart';
+import 'package:kawalcovid19/common/navigation.dart';
+import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/kcov_repository.dart';
+import 'package:kawalcovid19/ui/about/about_page.dart';
 import 'package:kawalcovid19/ui/faq/faq_page.dart';
 import 'package:kawalcovid19/ui/home/home_page.dart';
 import 'package:kawalcovid19/ui/more/more_page.dart';
@@ -48,7 +50,9 @@ class _DashBoardState extends State<DashBoardPage> {
               icon: Icon(
                 Icons.info,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigation.intent(context, AboutPage.routeName);
+              },
             ),
           ],
         ),
@@ -65,7 +69,7 @@ class _DashBoardState extends State<DashBoardPage> {
             ),
             BlocProvider(
               create: (context) {
-                return FaqBloc(KcovRepository());
+                return PostBloc(KcovRepository());
               },
               child: FAQPage(),
             ),
