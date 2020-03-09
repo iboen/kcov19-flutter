@@ -21,6 +21,45 @@ abstract class RestClient {
 
   @GET("/posts/2")
   Future<Post> getFaq();
+
+  @GET("https://kawalcovid19.harippe.id/api/summary")
+  Future<Statistics> getStatistics();
+}
+
+@JsonSerializable()
+class Statistics extends Equatable {
+
+  final Value confirmed;
+  final Value recovered;
+  final Value deaths;
+  final Value metadata;
+
+  Statistics(this.confirmed, this.recovered, this.deaths, this.metadata);
+
+  @override
+  List<Object> get props => [confirmed, recovered, deaths, metadata];
+
+  factory Statistics.fromJson(Map<String, dynamic> json) => _$StatisticsFromJson(json);
+  Map<String, dynamic> toJson() => _$StatisticsToJson(this);
+
+}
+
+@JsonSerializable()
+class Value extends Equatable {
+
+  final int value;
+  final String lastUpdatedAt;
+
+  Value(this.value, this.lastUpdatedAt);
+
+  @override
+  List<Object> get props => [value, lastUpdatedAt];
+
+  factory Value.fromJson(Map<String, dynamic> json) =>
+      _$ValueFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ValueToJson(this);
+
 }
 
 @JsonSerializable()

@@ -9,6 +9,8 @@ class LocalRepository implements Repository {
   static const POSTS = "posts";
   static const LAST_UPDATE_FAQ = "last_update_faq";
   static const FAQ = "faq";
+  static const LAST_UPDATE_STATISTICS = "last_update_statistics";
+  static const STATISTICS = "statistics";
 
   Future<List<Post>> getPosts() async {
     return SharedPreferences.getInstance().then((prefs) {
@@ -53,5 +55,20 @@ class LocalRepository implements Repository {
     });
   }
 
+  @override
+  Future<Statistics> getStatistics() {
+    return SharedPreferences.getInstance().then((prefs) {
+      Map json = jsonDecode(prefs.getString(STATISTICS));
+      return Statistics.fromJson(json);
+    });
+  }
+
+  @override
+  Future<bool> saveStatistics(Statistics statistics) {
+    return SharedPreferences.getInstance().then((prefs) {
+      String json = jsonEncode(statistics);
+      return prefs.setString(STATISTICS, json);
+    });
+  }
 
 }

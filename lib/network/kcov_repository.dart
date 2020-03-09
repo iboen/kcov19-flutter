@@ -66,4 +66,29 @@ class KcovRepository implements Repository {
   Future<bool> saveFaq(Post faq) {
     return local.saveFaq(faq);
   }
+
+  @override
+  Future<Statistics> getStatistics() async {
+    try {
+      // check last update, if more than an hour, get from API
+      if ((DateTime.now().millisecondsSinceEpoch -
+          await local.getLastUpdate(LocalRepository.LAST_UPDATE_STATISTICS)) /
+          1000 <
+          3600) {
+        return await local.getStatistics();
+      } else {
+        throw Exception();
+      }
+    } catch (_) {
+      final statistics = await api.getStatistics();
+      await local.saveStatistics(statistics);
+      await local.saveLastUpdate(LocalRepository.LAST_UPDATE_STATISTICS);
+      return statistics;
+    }
+  }
+
+  @override
+  Future<bool> saveStatistics(Statistics statistics) {
+    return local.saveStatistics(statistics);
+  }
 }

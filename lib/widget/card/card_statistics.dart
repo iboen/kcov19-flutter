@@ -4,7 +4,8 @@ import 'package:kawalcovid19/common/sizes.dart';
 
 class CardStatistics extends StatelessWidget {
 
-  final String confirmed, recovered, deaths, lastUpdatedAt;
+  final int confirmed, recovered, deaths;
+  final String lastUpdatedAt;
 
   const CardStatistics({Key key, this.confirmed, this.recovered, this.deaths, this.lastUpdatedAt}) : super(key: key);
 
@@ -24,7 +25,7 @@ class CardStatistics extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      confirmed,
+                      confirmed.toString(),
                       style: TextStyle(
                         fontSize: Sizes.width(context) / 5,
                         fontWeight: FontWeight.w800,
@@ -50,7 +51,7 @@ class CardStatistics extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Text(
-                        recovered,
+                        recovered.toString(),
                         style: TextStyle(
                           fontSize: Sizes.width(context) / 5,
                           fontWeight: FontWeight.w800,
@@ -76,7 +77,7 @@ class CardStatistics extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Text(
-                        deaths,
+                        deaths.toString(),
                         style: TextStyle(
                           fontSize: Sizes.width(context) / 5,
                           fontWeight: FontWeight.w800,

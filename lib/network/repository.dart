@@ -8,4 +8,8 @@ abstract class Repository {
   Future<Post> getFaq();
 
   Future<bool> saveFaq(Post faq);
+
+  Future<Statistics> getStatistics();
+
+  Future<bool> saveStatistics(Statistics statistics);
 }
