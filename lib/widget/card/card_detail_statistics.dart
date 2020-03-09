@@ -42,14 +42,14 @@ class CardDetailStatistics extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     color: Theme.of(context).primaryTextTheme.body1.color,
-                    width: Sizes.width(context) / 4,
-                    height: Sizes.width(context) / 4,
+                    width: Sizes.width(context) / 6,
+                    height: Sizes.width(context) / 6,
                     child: Center(
                       child: Text(
                         caseId == null ? "0" : "#$caseId",
                         style: TextStyle(
                             color: ColorPalettes.orange,
-                            fontSize: Sizes.width(context) / 12,
+                            fontSize: Sizes.width(context) / 20,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -75,9 +75,7 @@ class CardDetailStatistics extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
-                height: Sizes.dp10(context),
-              ),
+              Divider(),
               Text(notes == null ? "Notes: Tidak ada keterangan" : "Notes: $notes"),
             ],
           ),

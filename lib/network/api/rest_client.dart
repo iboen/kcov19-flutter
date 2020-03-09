@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:kawalcovid19/const/app_constant.example.dart';
+import 'package:kawalcovid19/const/api_constant.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart' hide Headers;
 
-part '../rest_client.g.dart';
+part 'rest_client.g.dart';
 
-@RestApi(baseUrl: AppConstant.baseUrl)
+@RestApi(baseUrl: ApiConstant.baseUrl)
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
@@ -21,6 +21,9 @@ abstract class RestClient {
 
   @GET("/posts/2")
   Future<Post> getFaq();
+
+  @GET("/posts/282")
+  Future<Post> getAbout();
 
   @GET("https://kawalcovid19.harippe.id/api/summary")
   Future<Statistics> getStatistics();
