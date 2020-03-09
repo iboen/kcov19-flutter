@@ -4,7 +4,7 @@ import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart' hide Headers;
 
-part 'rest_client.g.dart';
+part '../rest_client.g.dart';
 
 @RestApi(baseUrl: AppConstant.baseUrl)
 abstract class RestClient {

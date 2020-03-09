@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:kawalcovid19/network/repository.dart';
-import 'package:kawalcovid19/network/rest_client.dart';
+import 'package:kawalcovid19/network/repository/repository.dart';
+import 'package:kawalcovid19/network/api/rest_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:kawalcovid19/const/app_constant.example.dart';
 
