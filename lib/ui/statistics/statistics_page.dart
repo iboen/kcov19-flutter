@@ -36,9 +36,15 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     lastUpdatedAt: state.statistics.metadata.lastUpdatedAt,
                   );
                 } else if (state is StatisticsLoading) {
-                  return Center(child: CircularProgressIndicator());
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
                 } else if (state is StatisticsNotLoaded) {
-                  return Center(child: Text(state.errorMessage));
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(child: Text(state.errorMessage)),
+                  );
                 } else {
                   return Center(child: Text(""));
                 }
@@ -87,9 +93,15 @@ class _StatisticsPageState extends State<StatisticsPage> {
                     },
                   );
                 } else if (state is ConfirmedLoading) {
-                  return Center(child: CircularProgressIndicator());
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(child: CircularProgressIndicator()),
+                  );
                 } else if (state is ConfirmedNotLoaded) {
-                  return Center(child: Text(state.errorMessage));
+                  return Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Center(child: Text(state.errorMessage)),
+                  );
                 } else {
                   return Center(child: Text(""));
                 }

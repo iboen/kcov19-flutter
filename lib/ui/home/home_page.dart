@@ -72,7 +72,10 @@ class _HomePageState extends State<HomePage> {
           } else if (state is PostsLoading) {
             return Center(child: CircularProgressIndicator());
           } else if (state is PostsNotLoaded) {
-            return Center(child: Text(state.errorMessage));
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(child: Text(state.errorMessage)),
+            );
           } else {
             return Center(child: Text(""));
           }
