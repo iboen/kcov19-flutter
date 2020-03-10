@@ -22,18 +22,8 @@ class ApiRepository implements Repository {
   }
 
   @override
-  Future<bool> savePosts(List<Post> posts) {
-    return Future.value(false);
-  }
-
-  @override
-  Future<bool> saveFaq(Post faq) {
-    return Future.value(false);
-  }
-
-  @override
-  Future<bool> saveStatistics(Statistics statistics) {
-    return Future.value(false);
+  Future<Post> getAbout() {
+    return client.getAbout();
   }
 
   @override
@@ -44,11 +34,6 @@ class ApiRepository implements Repository {
   @override
   Future<List<ListConfirmed>> getListConfirmed() {
     return client.getListConfirmed();
-  }
-
-  @override
-  Future<bool> saveListConfirmed(List<ListConfirmed> listConfirmed) {
-    return Future.value(false);
   }
 
 }

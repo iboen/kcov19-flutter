@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:kawalcovid19/common/color_palettes.dart';
 import 'package:kawalcovid19/common/sizes.dart';
 
@@ -44,7 +45,6 @@ class CardStatistics extends StatelessWidget {
                         ),
                         Text(
                           "Terkonfimasi",
-                          style: TextStyle(fontSize: 10),
                         ),
                       ],
                     )),
@@ -71,7 +71,6 @@ class CardStatistics extends StatelessWidget {
                         ),
                         Text(
                           "Sembuh",
-                          style: TextStyle(fontSize: 10),
                         ),
                       ],
                     )),
@@ -98,7 +97,6 @@ class CardStatistics extends StatelessWidget {
                         ),
                         Text(
                           "Meninggal",
-                          style: TextStyle(fontSize: 10),
                         ),
                       ],
                     )),
@@ -108,10 +106,15 @@ class CardStatistics extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: Sizes.dp12(context),
+            height: Sizes.dp4(context),
           ),
-          Text(
-            "Pembaharuan Terakhir: $lastUpdatedAt",
+          Center(
+            child: Text(
+              "Pembaharuan Terakhir: " +
+                  DateFormat("dd MMM yyyy HH:mm")
+                      .format((DateTime.parse(lastUpdatedAt))),
+              style: TextStyle(fontSize: 12),
+            ),
           ),
         ],
       ),

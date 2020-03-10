@@ -9,86 +9,85 @@ class CardArticle extends StatelessWidget {
   final String date;
   final Function onTap;
 
-  const CardArticle({Key key, this.title, this.shortContent, this.date, this.onTap})
+  const CardArticle(
+      {Key key, this.title, this.shortContent, this.date, this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-          right: Sizes.dp16(context),
-          top: Sizes.dp8(context),
-          bottom: Sizes.dp8(context)),
-      child: InkWell(
-        onTap: onTap,
-        child: Container(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Container(
-                    margin: EdgeInsets.only(top: 5),
-                    width: 60,
-                    height: 60,
-                    color: Theme.of(context).primaryTextTheme.body1.color,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          DateFormat("dd").format(DateTime.parse(date)),
-                          style: TextStyle(
-                              color: Theme.of(context).backgroundColor,
-                              fontSize: Sizes.dp20(context),
-                              fontWeight: FontWeight.w500),
-                        ),
-                        Text(
-                          DateFormat("MMM")
-                              .format(DateTime.parse(date))
-                              .toUpperCase(),
-                          style: TextStyle(
-                            color: Theme.of(context).backgroundColor,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsets.only(left: Sizes.dp8(context)),
+    return InkWell(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 16.0,
+          top: 16.0,
+          bottom: 16.0,
+          right: 16.0,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Stack(
+              children: <Widget>[
+                Container(
+                  width: 60,
+                  height: 60,
+                  color: Theme.of(context).primaryTextTheme.bodyText2.color,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        title,
+                        DateFormat("dd").format(DateTime.parse(date)),
                         style: TextStyle(
-                          fontSize: Sizes.dp20(context),
-                          fontWeight: FontWeight.w800,
-                        ),
-                        textAlign: TextAlign.left,
+                            color: Theme.of(context).backgroundColor,
+                            fontSize: Sizes.dp20(context),
+                            fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(height: Sizes.dp6(context)),
-                      Container(
-                        width: Sizes.width(context),
-                        child: Text(
-                          parse(parse(shortContent).body.text)
-                              .documentElement
-                              .text,
-                          style: TextStyle(
-                            fontSize: Sizes.dp14(context),
-                            fontWeight: FontWeight.w300,
-                          ),
+                      Text(
+                        DateFormat("MMM")
+                            .format(DateTime.parse(date))
+                            .toUpperCase(),
+                        style: TextStyle(
+                          color: Theme.of(context).backgroundColor,
                         ),
-                      ),
-                      Divider()
+                      )
                     ],
                   ),
                 ),
+              ],
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.only(left: Sizes.dp16(context)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: Sizes.dp18(context),
+                        fontWeight: FontWeight.w800,
+                      ),
+                      textAlign: TextAlign.left,
+                    ),
+                    SizedBox(height: Sizes.dp6(context)),
+                    Container(
+                      width: Sizes.width(context),
+                      child: Text(
+                        parse(parse(shortContent).body.text)
+                            .documentElement
+                            .text.trim(),
+                        style: TextStyle(
+                          fontSize: Sizes.dp14(context),
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

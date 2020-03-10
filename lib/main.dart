@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kawalcovid19/blocs/post/bloc.dart';
 import 'package:kawalcovid19/common/color_palettes.dart';
+import 'package:kawalcovid19/const/app_constant.dart';
+import 'package:kawalcovid19/network/repository/kcov_repository.dart';
+import 'package:kawalcovid19/ui/about/about_page.dart';
 import 'package:kawalcovid19/common/firebase_notification_handler.dart';
-import 'package:kawalcovid19/const/app_constant.example.dart';
 import 'package:kawalcovid19/ui/dashboard/dashboard_page.dart';
 import 'package:kawalcovid19/blocs/SimpleBlocDelegate.dart';
 import 'package:kawalcovid19/ui/home/detail_article.dart';
 
-void main() async{
+void main() async {
   // BlocSupervisor oversees Blocs and delegates to BlocDelegate.
   // We can set the BlocSupervisor's delegate to an instance of `SimpleBlocDelegate`.
   // This will allow us to handle all transitions and errors in SimpleBlocDelegate.
@@ -31,8 +34,9 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: isDark ? ColorPalettes.darkPrimary : ColorPalettes.lightPrimary,
-      statusBarIconBrightness: isDark?Brightness.light:Brightness.dark,
+      statusBarColor:
+          isDark ? ColorPalettes.darkPrimary : ColorPalettes.lightPrimary,
+      statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
     ));
     // Check the default of FCM
     new FirebaseNotifications().setUpFirebase();
@@ -48,6 +52,11 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/': (context) => DashBoardPage(),
         DetailArticle.routeName: (context) => DetailArticle(),
+        AboutPage.routeName: (context) => BlocProvider(
+            create: (context) {
+              return PostBloc(KcovRepository());
+            },
+            child: AboutPage()),
       },
     );
   }
