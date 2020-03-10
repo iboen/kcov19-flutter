@@ -32,7 +32,7 @@ class CardArticle extends StatelessWidget {
                 Container(
                   width: 60,
                   height: 60,
-                  color: Theme.of(context).primaryTextTheme.bodyText2.color,
+                  color: Theme.of(context).primaryTextTheme.body2.color,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
