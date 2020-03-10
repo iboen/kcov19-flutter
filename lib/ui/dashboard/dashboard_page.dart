@@ -27,112 +27,96 @@ class _DashBoardState extends State<DashBoardPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        return showDialog(
-            barrierDismissible: false,
-            context: context,
-            builder: (BuildContext context) {
-              return PopUp(
-                content: "Are you sure want to exit?",
-                cancelText: "No",
-                acceptText: "Yes",
-                onTapCancel: () => Navigator.of(context).pop(),
-                onTapAccept: () => SystemNavigator.pop(),
-              );
-            });
-      },
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(AppConstant.appName),
-          centerTitle: true,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(
-                Icons.info,
-              ),
-              onPressed: () {
-                Navigation.intent(context, AboutPage.routeName);
-              },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(AppConstant.appName),
+        centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.info,
             ),
-          ],
-        ),
-        body: PageView(
-          physics: NeverScrollableScrollPhysics(),
-          controller: _pageController,
-          onPageChanged: onPageChanged,
-          children: <Widget>[
-            BlocProvider(
-              create: (context) {
-                return PostsBloc(KcovRepository());
-              },
-              child: HomePage(),
-            ),
-            BlocProvider(
-              create: (context) {
-                return PostBloc(KcovRepository());
-              },
-              child: FAQPage(),
-            ),
-            MultiBlocProvider(
-              providers: [
-                BlocProvider<StatisticsBloc>(
-                  create: (context) {
-                    return StatisticsBloc(KcovRepository());
-                  },
-                ),
-                BlocProvider<ConfirmedBloc>(
-                  create: (context) {
-                    return ConfirmedBloc(KcovRepository());
-                  },
-                ),
-              ],
-              child: StatisticsPage(),
-            ),
-            MorePage(),
-          ],
-        ),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(
-            // sets the background color of the `BottomNavigationBar`
-            canvasColor: Theme.of(context).primaryColor,
-            // sets the active color of the `BottomNavigationBar` if `Brightness` is light
-            primaryColor: Theme.of(context).accentColor,
-            textTheme: Theme.of(context).textTheme.copyWith(
-                  caption: TextStyle(color: Colors.grey[500]),
-                ),
+            onPressed: () {
+              Navigation.intent(context, AboutPage.routeName);
+            },
           ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.home,
-                ),
-                title: Container(height: 0.0),
+        ],
+      ),
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _pageController,
+        onPageChanged: onPageChanged,
+        children: <Widget>[
+          BlocProvider(
+            create: (context) {
+              return PostsBloc(KcovRepository());
+            },
+            child: HomePage(),
+          ),
+          BlocProvider(
+            create: (context) {
+              return PostBloc(KcovRepository());
+            },
+            child: FAQPage(),
+          ),
+          MultiBlocProvider(
+            providers: [
+              BlocProvider<StatisticsBloc>(
+                create: (context) {
+                  return StatisticsBloc(KcovRepository());
+                },
               ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.question_answer,
-                ),
-                title: Container(height: 0.0),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.show_chart,
-                ),
-                title: Container(height: 0.0),
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.more_horiz,
-                ),
-                title: Container(height: 0.0),
+              BlocProvider<ConfirmedBloc>(
+                create: (context) {
+                  return ConfirmedBloc(KcovRepository());
+                },
               ),
             ],
-            onTap: navigationTapped,
-            currentIndex: _page,
+            child: StatisticsPage(),
           ),
+          MorePage(),
+        ],
+      ),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          // sets the background color of the `BottomNavigationBar`
+          canvasColor: Theme.of(context).primaryColor,
+          // sets the active color of the `BottomNavigationBar` if `Brightness` is light
+          primaryColor: Theme.of(context).accentColor,
+          textTheme: Theme.of(context).textTheme.copyWith(
+                caption: TextStyle(color: Colors.grey[500]),
+              ),
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+              ),
+              title: Container(height: 0.0),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.question_answer,
+              ),
+              title: Container(height: 0.0),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.show_chart,
+              ),
+              title: Container(height: 0.0),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.more_horiz,
+              ),
+              title: Container(height: 0.0),
+            ),
+          ],
+          onTap: navigationTapped,
+          currentIndex: _page,
         ),
       ),
     );
