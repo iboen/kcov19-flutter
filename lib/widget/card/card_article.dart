@@ -4,9 +4,7 @@ import 'package:kawalcovid19/common/sizes.dart';
 import 'package:intl/intl.dart';
 
 class CardArticle extends StatelessWidget {
-  final String title;
-  final String shortContent;
-  final String date;
+  final String title, shortContent, date;
   final Function onTap;
 
   const CardArticle(
@@ -18,12 +16,7 @@ class CardArticle extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.only(
-          left: 16.0,
-          top: 16.0,
-          bottom: 16.0,
-          right: 16.0,
-        ),
+        padding: EdgeInsets.all(Sizes.dp16(context)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -32,7 +25,7 @@ class CardArticle extends StatelessWidget {
                 Container(
                   width: 60,
                   height: 60,
-                  color: Theme.of(context).primaryTextTheme.bodyText2.color,
+                  color: Theme.of(context).primaryTextTheme.body2.color,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[

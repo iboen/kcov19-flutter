@@ -37,12 +37,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
                   );
                 } else if (state is StatisticsLoading) {
                   return Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(Sizes.dp16(context)),
                     child: Center(child: CircularProgressIndicator()),
                   );
                 } else if (state is StatisticsNotLoaded) {
                   return Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(Sizes.dp16(context)),
                     child: Center(child: Text(state.errorMessage)),
                   );
                 } else {
@@ -58,7 +58,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
         SliverList(
           delegate: SliverChildListDelegate([
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: EdgeInsets.symmetric(horizontal: Sizes.dp16(context)),
               child: Text(
                 "Detail Kasus Lengkap",
                 style: TextStyle(
@@ -94,12 +94,12 @@ class _StatisticsPageState extends State<StatisticsPage> {
                   );
                 } else if (state is ConfirmedLoading) {
                   return Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(Sizes.dp16(context)),
                     child: Center(child: CircularProgressIndicator()),
                   );
                 } else if (state is ConfirmedNotLoaded) {
                   return Padding(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: EdgeInsets.all(Sizes.dp16(context)),
                     child: Center(child: Text(state.errorMessage)),
                   );
                 } else {
