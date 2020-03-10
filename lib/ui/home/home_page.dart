@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/common/navigation.dart';
 import 'package:kawalcovid19/common/screen_arguments.dart';
+import 'package:kawalcovid19/common/sizes.dart';
 import 'package:kawalcovid19/network/api/rest_client.dart';
 import 'package:kawalcovid19/ui/home/detail_article.dart';
 import 'package:kawalcovid19/widget/card/card_article.dart';
@@ -73,7 +74,7 @@ class _HomePageState extends State<HomePage> {
             return Center(child: CircularProgressIndicator());
           } else if (state is PostsNotLoaded) {
             return Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(Sizes.dp16(context)),
               child: Center(child: Text(state.errorMessage)),
             );
           } else {

@@ -45,7 +45,7 @@ class CardStatistics extends StatelessWidget {
                         ),
                         Text(
                           "Terkonfimasi",
-                          style: TextStyle(fontSize: 12),
+                          style: TextStyle(fontSize: Sizes.dp12(context)),
                         ),
                       ],
                     )),
@@ -70,7 +70,7 @@ class CardStatistics extends StatelessWidget {
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        Text("Sembuh", style: TextStyle(fontSize: 12)),
+                        Text("Sembuh", style: TextStyle(fontSize: Sizes.dp12(context))),
                       ],
                     )),
                   ),
@@ -94,7 +94,7 @@ class CardStatistics extends StatelessWidget {
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        Text("Meninggal", style: TextStyle(fontSize: 12)),
+                        Text("Meninggal", style: TextStyle(fontSize: Sizes.dp12(context))),
                       ],
                     )),
                   ),
@@ -110,7 +110,7 @@ class CardStatistics extends StatelessWidget {
               "Pembaharuan Terakhir: " +
                   DateFormat("dd MMM yyyy HH:mm")
                       .format((DateTime.parse(lastUpdatedAt))),
-              style: TextStyle(fontSize: 12),
+              style: TextStyle(fontSize: Sizes.dp12(context)),
             ),
           ),
         ],

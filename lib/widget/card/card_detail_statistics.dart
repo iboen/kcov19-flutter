@@ -3,13 +3,8 @@ import 'package:kawalcovid19/common/color_palettes.dart';
 import 'package:kawalcovid19/common/sizes.dart';
 
 class CardDetailStatistics extends StatelessWidget {
-  final String caseId;
+  final String caseId, gender, city, province, hospitalizedIn, notes;
   final int age;
-  final String gender;
-  final String city;
-  final String province;
-  final String hospitalizedIn;
-  final String notes;
 
   const CardDetailStatistics(
       {Key key,
@@ -25,8 +20,8 @@ class CardDetailStatistics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding:
-          EdgeInsets.symmetric(horizontal: Sizes.dp8(context), vertical: Sizes.dp4(context)),
+      padding: EdgeInsets.symmetric(
+          horizontal: Sizes.dp8(context), vertical: Sizes.dp4(context)),
       width: Sizes.width(context),
       child: Card(
         shape: RoundedRectangleBorder(
@@ -64,11 +59,21 @@ class CardDetailStatistics extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text(age == null ? "Umur: Belum diketahui" : "Umur: $age"),
-                          Text(gender == null ? "Jenis Kelamin: Belum diketahui" : "Jenis Kelamin: $gender"),
-                          Text(city == null ? "Kota: Belum diketahui" : "Kota: $city"),
-                          Text(province == null ? "Provinsi: Belum diketahui" : "Provinsi: $province"),
-                          Text(hospitalizedIn == null ? "Dirawat di: Belum diketahui" : "Dirawat di: $hospitalizedIn"),
+                          Text(age == null
+                              ? "Umur: Belum diketahui"
+                              : "Umur: $age"),
+                          Text(gender == null
+                              ? "Jenis Kelamin: Belum diketahui"
+                              : "Jenis Kelamin: $gender"),
+                          Text(city == null
+                              ? "Kota: Belum diketahui"
+                              : "Kota: $city"),
+                          Text(province == null
+                              ? "Provinsi: Belum diketahui"
+                              : "Provinsi: $province"),
+                          Text(hospitalizedIn == null
+                              ? "Dirawat di: Belum diketahui"
+                              : "Dirawat di: $hospitalizedIn"),
                         ],
                       ),
                     ),
@@ -76,7 +81,9 @@ class CardDetailStatistics extends StatelessWidget {
                 ],
               ),
               Divider(),
-              Text(notes == null ? "Notes: Tidak ada keterangan" : "Notes: $notes"),
+              Text(notes == null
+                  ? "Notes: Tidak ada keterangan"
+                  : "Notes: $notes"),
             ],
           ),
         ),
