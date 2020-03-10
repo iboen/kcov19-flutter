@@ -8,7 +8,7 @@ class ColorPalettes{
   static Color lightPrimary = Color(0xfffcfcff);
   static Color darkPrimary = Color(0xff16161C);
   static Color lightAccent = Colors.blue;
-  static Color darkAccent = Colors.blueAccent;
+  static Color darkAccent = Color(0xffD73831);
   static Color lightBG = Color(0xfffcfcff);
   static Color darkBG = Color(0xff212121);
   static Color badgeColor = Colors.red;

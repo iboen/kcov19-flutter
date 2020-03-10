@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/repository/repository.dart';
 import 'bloc.dart';
 
@@ -28,7 +29,7 @@ class StatisticsBloc extends Bloc<StatisticsEvent, StatisticsState> {
       yield StatisticsLoaded(statistics);
     } catch (_) {
       print(_.toString());
-      yield StatisticsNotLoaded(_.toString());
+      yield StatisticsNotLoaded(AppConstant.ERROR_GENERAL);
     }
   }
 

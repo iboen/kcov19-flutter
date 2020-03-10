@@ -45,6 +45,7 @@ class CardStatistics extends StatelessWidget {
                         ),
                         Text(
                           "Terkonfimasi",
+                          style: TextStyle(fontSize: 12),
                         ),
                       ],
                     )),
@@ -69,9 +70,7 @@ class CardStatistics extends StatelessWidget {
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        Text(
-                          "Sembuh",
-                        ),
+                        Text("Sembuh", style: TextStyle(fontSize: 12)),
                       ],
                     )),
                   ),
@@ -95,9 +94,7 @@ class CardStatistics extends StatelessWidget {
                           ),
                           textAlign: TextAlign.left,
                         ),
-                        Text(
-                          "Meninggal",
-                        ),
+                        Text("Meninggal", style: TextStyle(fontSize: 12)),
                       ],
                     )),
                   ),

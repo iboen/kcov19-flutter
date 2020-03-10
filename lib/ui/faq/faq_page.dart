@@ -74,7 +74,10 @@ class _FAQPageState extends State<FAQPage> {
       } else if (state is PostLoading) {
         return Center(child: CircularProgressIndicator());
       } else if (state is PostNotLoaded) {
-        return Center(child: Text(state.errorMessage));
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Center(child: Text(state.errorMessage)),
+        );
       } else {
         return Center(child: Text(""));
       }

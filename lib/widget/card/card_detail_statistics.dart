@@ -26,7 +26,7 @@ class CardDetailStatistics extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding:
-          EdgeInsets.only(top: Sizes.dp4(context), bottom: Sizes.dp4(context)),
+          EdgeInsets.symmetric(horizontal: Sizes.dp8(context), vertical: Sizes.dp4(context)),
       width: Sizes.width(context),
       child: Card(
         shape: RoundedRectangleBorder(

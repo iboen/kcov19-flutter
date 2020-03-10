@@ -6,6 +6,7 @@ import 'package:kawalcovid19/common/color_palettes.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/repository/kcov_repository.dart';
 import 'package:kawalcovid19/ui/about/about_page.dart';
+import 'package:kawalcovid19/common/firebase_notification_handler.dart';
 import 'package:kawalcovid19/ui/dashboard/dashboard_page.dart';
 import 'package:kawalcovid19/blocs/SimpleBlocDelegate.dart';
 import 'package:kawalcovid19/ui/home/detail_article.dart';
@@ -37,6 +38,8 @@ class _MyAppState extends State<MyApp> {
           isDark ? ColorPalettes.darkPrimary : ColorPalettes.lightPrimary,
       statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
     ));
+    // Check the default of FCM
+    new FirebaseNotifications().setUpFirebase();
   }
 
   @override

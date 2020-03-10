@@ -22,15 +22,15 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _loadPost();
     _refreshCompleter = Completer<void>();
-    BlocProvider.of<PostsBloc>(context).listen((state){
-      if(state is PostsLoaded){
+    BlocProvider.of<PostsBloc>(context).listen((state) {
+      if (!(state is PostsLoading)) {
         _refreshCompleter?.complete();
         _refreshCompleter = Completer();
       }
     });
   }
 
-  Future<Null> _refresh() {
+  Future<void> _refresh() {
     BlocProvider.of<PostsBloc>(context).add(LoadPosts());
 
     return _refreshCompleter.future;
@@ -72,7 +72,10 @@ class _HomePageState extends State<HomePage> {
           } else if (state is PostsLoading) {
             return Center(child: CircularProgressIndicator());
           } else if (state is PostsNotLoaded) {
-            return Center(child: Text(state.errorMessage));
+            return Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Center(child: Text(state.errorMessage)),
+            );
           } else {
             return Center(child: Text(""));
           }

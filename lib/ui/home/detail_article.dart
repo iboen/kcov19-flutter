@@ -32,47 +32,40 @@ class DetailArticle extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(Sizes.dp16(context)),
             child: Container(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: Sizes.dp16(context),
-                    horizontal: Sizes.dp16(context)),
-                child: Container(
-                  width: Sizes.width(context),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        args.title,
-                        style: TextStyle(
-                          fontSize: Sizes.dp24(context),
-                          fontWeight: FontWeight.w800,
-                        ),
-                        textAlign: TextAlign.left,
-                      ),
-                      SizedBox(height: Sizes.dp6(context)),
-                      Text(
-                        parse(
-                            parse(args.message).body.text)
-                            .documentElement
-                            .text.trim(),
-                        style: TextStyle(
-                          fontSize: Sizes.dp18(context),
-                        ),
-                      ),
-                      SizedBox(height: Sizes.dp8(context)),
-                      Divider(
-                        height: Sizes.dp10(context),
-                      ),
-                      SizedBox(height: Sizes.dp8(context)),
-                      Html(
-                        onLinkTap: (src) {
-                          _launchURL(src);
-                        },
-                        data: args.content,
-                      ),
-                    ],
+              width: Sizes.width(context),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    args.title,
+                    style: TextStyle(
+                      fontSize: Sizes.dp24(context),
+                      fontWeight: FontWeight.w800,
+                    ),
+                    textAlign: TextAlign.left,
                   ),
-                ),
+                  SizedBox(height: Sizes.dp6(context)),
+                  Text(
+                    parse(
+                        parse(args.message).body.text)
+                        .documentElement
+                        .text.trim(),
+                    style: TextStyle(
+                      fontSize: Sizes.dp18(context),
+                    ),
+                  ),
+                  SizedBox(height: Sizes.dp8(context)),
+                  Divider(
+                    height: Sizes.dp10(context),
+                  ),
+                  SizedBox(height: Sizes.dp8(context)),
+                  Html(
+                    onLinkTap: (src) {
+                      _launchURL(src);
+                    },
+                    data: args.content,
+                  ),
+                ],
               ),
             ),
           ),

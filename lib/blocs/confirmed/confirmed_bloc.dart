@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:kawalcovid19/blocs/confirmed/bloc.dart';
+import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/repository/repository.dart';
 
 class ConfirmedBloc extends Bloc<ConfirmedEvent, ConfirmedState> {
@@ -27,7 +28,7 @@ class ConfirmedBloc extends Bloc<ConfirmedEvent, ConfirmedState> {
       yield ConfirmedLoaded(confirmed);
     } catch (_) {
       print(_.toString());
-      yield ConfirmedNotLoaded(_.toString());
+      yield ConfirmedNotLoaded(AppConstant.ERROR_GENERAL);
     }
   }
 
