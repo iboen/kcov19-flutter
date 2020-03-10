@@ -12,5 +12,9 @@ class AppConstant {
   static const LAST_UPDATE_CONFIRMED = "last_update_confirmed";
   static const CONFIRMED = "confirmed";
 
+  static const RC_LATEST_VERSION = "latestVersionName";
+  static const RC_IS_FORCE_UPDATE= "isForceUpdate";
+
+
   static const ERROR_GENERAL = "Data tidak dapat dimuat, silakan cek lagi nanti atau lihat www.kawalcov19.id";
 }

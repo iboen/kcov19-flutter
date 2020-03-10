@@ -40,12 +40,14 @@ class _MyAppState extends State<MyApp> {
     ));
     // Check the default of FCM
     new FirebaseNotifications().setUpFirebase();
+
   }
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+//      debugShowCheckedModeBanner: false,
       title: AppConstant.appName,
       theme: isDark ? ColorPalettes.darkTheme : ColorPalettes.lightTheme,
       initialRoute: '/',
@@ -60,4 +62,5 @@ class _MyAppState extends State<MyApp> {
       },
     );
   }
+
 }
