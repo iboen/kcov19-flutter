@@ -9,7 +9,6 @@ class FirebaseNotifications {
   void setUpFirebase() {
     _firebaseMessaging = FirebaseMessaging();
     firebaseCloudMessagingListeners();
-
   }
 
   void firebaseCloudMessagingListeners() {
