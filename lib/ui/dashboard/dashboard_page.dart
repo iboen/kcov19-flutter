@@ -6,6 +6,7 @@ import 'package:kawalcovid19/blocs/post/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/blocs/statistics/statistics_bloc.dart';
 import 'package:kawalcovid19/common/navigation.dart';
+import 'package:kawalcovid19/common/version_check.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/repository/kcov_repository.dart';
 import 'package:kawalcovid19/ui/about/about_page.dart';
@@ -145,6 +146,8 @@ class _DashBoardState extends State<DashBoardPage> {
   void initState() {
     super.initState();
     _pageController = PageController(initialPage: 0);
+
+    versionCheck(context);
   }
 
   @override
