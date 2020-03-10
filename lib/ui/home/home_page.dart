@@ -22,15 +22,15 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _loadPost();
     _refreshCompleter = Completer<void>();
-    BlocProvider.of<PostsBloc>(context).listen((state){
-      if(state is PostsLoaded){
+    BlocProvider.of<PostsBloc>(context).listen((state) {
+      if (!(state is PostsLoading)) {
         _refreshCompleter?.complete();
         _refreshCompleter = Completer();
       }
     });
   }
 
-  Future<Null> _refresh() {
+  Future<void> _refresh() {
     BlocProvider.of<PostsBloc>(context).add(LoadPosts());
 
     return _refreshCompleter.future;
