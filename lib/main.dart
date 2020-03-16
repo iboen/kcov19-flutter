@@ -10,6 +10,7 @@ import 'package:kawalcovid19/common/firebase_notification_handler.dart';
 import 'package:kawalcovid19/ui/dashboard/dashboard_page.dart';
 import 'package:kawalcovid19/blocs/SimpleBlocDelegate.dart';
 import 'package:kawalcovid19/ui/home/detail_article.dart';
+import 'package:kawalcovid19/ui/more/about_dev_page.dart';
 
 void main() async {
   // BlocSupervisor oversees Blocs and delegates to BlocDelegate.
@@ -47,13 +48,14 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-//      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false,
       title: AppConstant.appName,
       theme: isDark ? ColorPalettes.darkTheme : ColorPalettes.lightTheme,
       initialRoute: '/',
       routes: {
         '/': (context) => DashBoardPage(),
         DetailArticle.routeName: (context) => DetailArticle(),
+        AboutDevPage.routeName: (context) => AboutDevPage(),
         AboutPage.routeName: (context) => BlocProvider(
             create: (context) {
               return PostBloc(KcovRepository());

@@ -8,6 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:launch_review/launch_review.dart';
 import 'package:package_info/package_info.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+_launchURL(url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 versionCheck(context) async {
   //Get Current installed version of app
@@ -44,11 +53,11 @@ _showVersionDialog(context, PackageInfo info) async {
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
-      String title = "New Update Available";
+      String title = "Ada Versi Terbaru";
       String message =
-          "There is a newer version of app available please update it now.";
-      String btnLabel = "Update Now";
-      String btnLabelCancel = "Later";
+          "Versi terbaru telah tersedia, silakan perbaharui aplikasi sekarang juga.";
+      String btnLabel = "Unduh sekarang";
+      String btnLabelCancel = "Nanti";
       return Platform.isIOS
           ? new CupertinoAlertDialog(
               title: Text(title),
@@ -57,7 +66,7 @@ _showVersionDialog(context, PackageInfo info) async {
                 FlatButton(
                   child: Text(btnLabel),
                   // TODO appId
-                  onPressed: () => LaunchReview.launch(iOSAppId: "123"),
+                  onPressed: () => _launchURL("https://kcov.id/app"),
                 ),
                 FlatButton(
                   child: Text(btnLabelCancel),
@@ -76,7 +85,7 @@ _showVersionDialog(context, PackageInfo info) async {
                 FlatButton(
                   child: Text(btnLabel),
                   onPressed: () =>
-                      LaunchReview.launch(androidAppId: info.packageName),
+                      _launchURL("https://kcov.id/app"),
                 ),
               ],
             );

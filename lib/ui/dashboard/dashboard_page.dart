@@ -12,6 +12,7 @@ import 'package:kawalcovid19/network/repository/kcov_repository.dart';
 import 'package:kawalcovid19/ui/about/about_page.dart';
 import 'package:kawalcovid19/ui/faq/faq_page.dart';
 import 'package:kawalcovid19/ui/home/home_page.dart';
+import 'package:kawalcovid19/ui/more/about_dev_page.dart';
 import 'package:kawalcovid19/ui/more/more_page.dart';
 import 'package:kawalcovid19/ui/statistics/statistics_page.dart';
 import 'package:kawalcovid19/widget/alert/pop_up.dart';
@@ -20,6 +21,25 @@ class DashBoardPage extends StatefulWidget {
   @override
   _DashBoardState createState() => _DashBoardState();
 }
+
+class Choice {
+  const Choice({this.route, this.title, this.icon});
+
+  final String route;
+  final String title;
+  final IconData icon;
+}
+
+const List<Choice> choices = const <Choice>[
+  const Choice(
+      route: AboutPage.routeName,
+      title: 'Tentang KawalCOVID19',
+      icon: Icons.info),
+  const Choice(
+      route: AboutDevPage.routeName,
+      title: 'Tentang Pengembang',
+      icon: Icons.developer_mode),
+];
 
 class _DashBoardState extends State<DashBoardPage> {
   PageController _pageController;
@@ -32,14 +52,29 @@ class _DashBoardState extends State<DashBoardPage> {
         title: Text(AppConstant.appName),
         centerTitle: true,
         actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.info,
-            ),
-            onPressed: () {
-              Navigation.intent(context, AboutPage.routeName);
+          // overflow menu
+          PopupMenuButton<Choice>(
+            onSelected: (Choice choice) {
+              // Causes the app to rebuild with the new _selectedChoice.
+              Navigation.intent(context, choice.route);
+            },
+            itemBuilder: (BuildContext context) {
+              return choices.map((Choice choice) {
+                return PopupMenuItem<Choice>(
+                  value: choice,
+                  child: Text(choice.title),
+                );
+              }).toList();
             },
           ),
+//          IconButton(
+//            icon: Icon(
+//              Icons.info,
+//            ),
+//            onPressed: () {
+//              Navigation.intent(context, AboutPage.routeName);
+//            },
+//          ),
         ],
       ),
       body: PageView(

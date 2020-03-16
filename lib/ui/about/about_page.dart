@@ -5,7 +5,7 @@ import 'package:kawalcovid19/common/sizes.dart';
 import 'package:kawalcovid19/widget/post_detail.dart';
 
 class AboutPage extends StatefulWidget {
-  static const routeName = '/about';
+  static const routeName = '/about-kawalcovid19';
 
   @override
   _AboutPageState createState() => _AboutPageState();
