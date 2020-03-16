@@ -67,14 +67,6 @@ class _DashBoardState extends State<DashBoardPage> {
               }).toList();
             },
           ),
-//          IconButton(
-//            icon: Icon(
-//              Icons.info,
-//            ),
-//            onPressed: () {
-//              Navigation.intent(context, AboutPage.routeName);
-//            },
-//          ),
         ],
       ),
       body: PageView(
