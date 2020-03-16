@@ -5,7 +5,6 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:html/parser.dart';
 
 class PostDetail extends StatelessWidget {
-
   final String title;
   final String message;
   final String content;
@@ -32,7 +31,7 @@ class PostDetail extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                title,
+                parse(parse(title).body.text).documentElement.text.trim(),
                 style: TextStyle(
                   fontSize: Sizes.dp24(context),
                   fontWeight: FontWeight.w800,
