@@ -35,13 +35,8 @@ end
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-
+  
   # Flutter Pod
-
-  # add the Firebase pod for Google Analytics
-  pod 'Firebase/Analytics'
-  # add pods for any other desired Firebase products
-  # https://firebase.google.com/docs/ios/setup#available-pods
 
   copied_flutter_dir = File.join(__dir__, 'Flutter')
   copied_framework_path = File.join(copied_flutter_dir, 'Flutter.framework')
@@ -81,6 +76,14 @@ target 'Runner' do
     File.symlink(path, symlink)
     pod name, :path => File.join(symlink, 'ios')
   end
+end
+
+# Prevent Cocoapods from embedding a second Flutter framework and causing an error with the new Xcode build system.
+install! 'cocoapods', :disable_input_output_paths => true
+
+target 'NotificationService' do
+  use_frameworks!
+  pod 'OneSignal', '>= 2.9.4', '< 3.0'
 end
 
 post_install do |installer|
