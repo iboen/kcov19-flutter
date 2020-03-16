@@ -56,7 +56,7 @@ class CardArticle extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      title,
+                      parse(parse(title).body.text).documentElement.text.trim(),
                       style: TextStyle(
                         fontSize: Sizes.dp18(context),
                         fontWeight: FontWeight.w800,
@@ -69,7 +69,8 @@ class CardArticle extends StatelessWidget {
                       child: Text(
                         parse(parse(shortContent).body.text)
                             .documentElement
-                            .text.trim(),
+                            .text
+                            .trim(),
                         style: TextStyle(
                           fontSize: Sizes.dp14(context),
                           fontWeight: FontWeight.w300,
