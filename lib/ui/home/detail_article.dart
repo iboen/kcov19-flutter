@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:kawalcovid19/common/navigation.dart';
 import 'package:kawalcovid19/common/screen_arguments.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/widget/post_detail.dart';
 import 'package:share/share.dart';
+import 'package:html/parser.dart';
 
 class DetailArticle extends StatelessWidget {
   static const routeName = '/detail_screen';
@@ -22,7 +22,7 @@ class DetailArticle extends StatelessWidget {
             onPressed: () {
               var url = "https://kawalcovid19.id/content/${args.id}/${args.slug}";
               print(url);
-              Share.share('${args.title} $url');
+              Share.share('${parse(parse(args.title).body.text).documentElement.text.trim()} $url');
             },
           )
         ],
