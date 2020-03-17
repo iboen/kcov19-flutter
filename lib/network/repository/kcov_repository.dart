@@ -6,7 +6,6 @@ import 'package:kawalcovid19/network/repository/remote/api_repository.dart';
 import 'package:kawalcovid19/network/repository/repository.dart';
 
 class KcovRepository implements Repository {
-
   final ApiRepository api;
   final LocalRepository local;
 
@@ -19,22 +18,17 @@ class KcovRepository implements Repository {
 
   KcovRepository._internal({@required this.api, @required this.local});
 
-  Future<List<Post>> getPosts() async {
+  Future<List<Post>> getPosts([int page = 1]) async {
     try {
-      // check last update, if more than an hour, get from API
-      if ((DateTime.now().millisecondsSinceEpoch -
-                  await local
-                      .getLastUpdate(AppConstant.LAST_UPDATE_POSTS)) /
-              1000 <
-          3600) {
-        return await local.getPosts();
+      var fromLocal = await local.getPosts(page);
+      if (fromLocal != null) {
+        return fromLocal;
       } else {
         throw Exception();
       }
     } catch (_) {
-      final posts = await api.getPosts();
-      await local.saveLastUpdate(AppConstant.LAST_UPDATE_POSTS);
-      await local.savePosts(posts);
+      final posts = await api.getPosts(page);
+      local.savePosts(posts, page);
       return posts;
     }
   }
@@ -42,69 +36,51 @@ class KcovRepository implements Repository {
   @override
   Future<Post> getFaq() async {
     try {
-      // check last update, if more than an hour, get from API
-      if ((DateTime.now().millisecondsSinceEpoch -
-                  await local.getLastUpdate(AppConstant.LAST_UPDATE_FAQ)) /
-              1000 <
-          3600) {
-        return await local.getFaq();
+      var fromLocal = await local.getFaq();
+      if (fromLocal != null) {
+        return fromLocal;
       } else {
         throw Exception();
       }
     } catch (_) {
-      final faq = await api.getFaq();
-      await local.saveFaq(faq);
-      await local.saveLastUpdate(AppConstant.LAST_UPDATE_FAQ);
-      return faq;
+      final post = await api.getFaq();
+      local.saveFaq(post);
+      return post;
     }
   }
 
   @override
   Future<Post> getAbout() async {
     try {
-      // check last update, if more than an hour, get from API
-      if ((DateTime.now().millisecondsSinceEpoch -
-          await local.getLastUpdate(AppConstant.LAST_UPDATE_ABOUT)) /
-          1000 <
-          3600) {
-        return await local.getAbout();
+      var fromLocal = await local.getAbout();
+      if (fromLocal != null) {
+        return fromLocal;
       } else {
         throw Exception();
       }
     } catch (_) {
-      final about = await api.getAbout();
-      await local.saveAbout(about);
-      await local.saveLastUpdate(AppConstant.LAST_UPDATE_ABOUT);
-      return about;
+      final post = await api.getAbout();
+      local.saveAbout(post);
+      return post;
     }
-  }
-
-  @override
-  Future<bool> savePosts(List<Post> posts) {
-    return local.savePosts(posts);
   }
 
   @override
   Future<Statistics> getStatistics() async {
     try {
-      // check last update, if more than an hour, get from API
-      if ((DateTime.now().millisecondsSinceEpoch -
-          await local.getLastUpdate(AppConstant.LAST_UPDATE_STATISTICS)) /
-          1000 <
-          3600) {
-        return await local.getStatistics();
+      var fromLocal = await local.getStatistics();
+      if (fromLocal != null) {
+        return fromLocal;
       } else {
         throw Exception();
       }
     } catch (_) {
-      final statistics = await api.getStatistics();
-      await local.saveStatistics(statistics);
-      await local.saveLastUpdate(AppConstant.LAST_UPDATE_STATISTICS);
-      return statistics;
+      final data = await api.getStatistics();
+      local.saveStatistics(data);
+      return data;
     }
   }
 
-  @override
   Future<bool> saveStatistics(Statistics statistics) {
     return local.saveStatistics(statistics);
   }
@@ -112,25 +88,19 @@ class KcovRepository implements Repository {
   @override
   Future<List<ListConfirmed>> getListConfirmed() async {
     try {
-      // check last update, if more than an hour, get from API
-      if ((DateTime.now().millisecondsSinceEpoch -
-          await local
-              .getLastUpdate(AppConstant.LAST_UPDATE_CONFIRMED)) /
-          1000 <
-          3600) {
-        return await local.getListConfirmed();
+      var fromLocal = await local.getListConfirmed();
+      if (fromLocal != null) {
+        return fromLocal;
       } else {
         throw Exception();
       }
     } catch (_) {
-      final confirmed = await api.getListConfirmed();
-      await local.saveLastUpdate(AppConstant.LAST_UPDATE_CONFIRMED);
-      await local.saveListConfirmed(confirmed);
-      return confirmed;
+      final data = await api.getListConfirmed();
+      local.saveListConfirmed(data);
+      return data;
     }
   }
 
-  @override
   Future<bool> saveListConfirmed(List<ListConfirmed> listConfirmed) {
     return local.saveListConfirmed(listConfirmed);
   }

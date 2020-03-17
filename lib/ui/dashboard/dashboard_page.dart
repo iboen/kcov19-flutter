@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/confirmed/confirmed_bloc.dart';
 import 'package:kawalcovid19/blocs/post/bloc.dart';
@@ -15,7 +14,6 @@ import 'package:kawalcovid19/ui/home/home_page.dart';
 import 'package:kawalcovid19/ui/more/about_dev_page.dart';
 import 'package:kawalcovid19/ui/more/more_page.dart';
 import 'package:kawalcovid19/ui/statistics/statistics_page.dart';
-import 'package:kawalcovid19/widget/alert/pop_up.dart';
 
 class DashBoardPage extends StatefulWidget {
   @override

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kawalcovid19/network/data/important_link.dart';
-import 'package:kawalcovid19/widget/card/card_important_link.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Developer {

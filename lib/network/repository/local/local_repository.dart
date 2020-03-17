@@ -1,95 +1,87 @@
 import 'dart:convert';
+import 'package:kawalcovid19/common/pref_helper.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/api/rest_client.dart';
 import 'package:kawalcovid19/network/repository/repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalRepository implements Repository {
-
-  Future<List<Post>> getPosts() async {
-    return SharedPreferences.getInstance().then((prefs) {
-      Iterable iterable = jsonDecode(prefs.getString(AppConstant.POSTS));
+  @override
+  Future<List<Post>> getPosts([int page = 1]) async {
+    var fromCache =
+        await PrefHelper.getCache(AppConstant.POSTS + "/" + page.toString());
+    if (fromCache != null) {
+      Iterable iterable = jsonDecode(fromCache);
       return iterable.map((e) => Post.fromJson(e)).toList();
-    });
+    }
+    return null;
   }
 
   @override
-  Future<Post> getFaq() {
-    return SharedPreferences.getInstance().then((prefs) {
-      Map json = jsonDecode(prefs.getString(AppConstant.FAQ));
+  Future<Post> getFaq() async {
+    var fromCache = await PrefHelper.getCache(AppConstant.FAQ);
+    if (fromCache != null) {
+      Map json = jsonDecode(fromCache);
       return Post.fromJson(json);
-    });
+    }
+    return null;
   }
 
   @override
-  Future<Post> getAbout() {
-    return SharedPreferences.getInstance().then((prefs) {
-      Map json = jsonDecode(prefs.getString(AppConstant.ABOUT));
+  Future<Post> getAbout() async {
+    var fromCache = await PrefHelper.getCache(AppConstant.ABOUT);
+    if (fromCache != null) {
+      Map json = jsonDecode(fromCache);
       return Post.fromJson(json);
-    });
+    }
+    return null;
   }
 
-  Future<bool> savePosts(List<Post> posts) {
-    return SharedPreferences.getInstance().then((prefs) {
-      String json = jsonEncode(posts);
-      return prefs.setString(AppConstant.POSTS, json);
-    });
+  Future<bool> savePosts(List<Post> posts, int page) async {
+    // if not page 1, set last checked date similar to page 1
+    int page1LastChecked;
+    if (page > 1) {
+      var page1Data = await PrefHelper.getFullCache(AppConstant.POSTS + "/1");
+      page1LastChecked = page1Data[PrefHelper.LAST_CHECKED];
+    }
+    return await PrefHelper.storeCache(
+        AppConstant.POSTS + "/" + page.toString(), jsonEncode(posts), lastChecked: page1LastChecked);
   }
 
   Future<bool> saveFaq(Post faq) {
-    return SharedPreferences.getInstance().then((prefs) {
-      String json = jsonEncode(faq);
-      return prefs.setString(AppConstant.FAQ, json);
-    });
+    return PrefHelper.storeCache(AppConstant.FAQ, jsonEncode(faq));
   }
 
   Future<bool> saveAbout(Post about) {
-    return SharedPreferences.getInstance().then((prefs) {
-      String json = jsonEncode(about);
-      return prefs.setString(AppConstant.ABOUT, json);
-    });
-  }
-
-  Future<bool> saveLastUpdate(String key) {
-    return SharedPreferences.getInstance().then((prefs) {
-      return prefs.setInt(key, DateTime.now().millisecondsSinceEpoch);
-    });
-  }
-
-  Future<int> getLastUpdate(String key) {
-    return SharedPreferences.getInstance().then((prefs) {
-      return prefs.getInt(key);
-    });
+    return PrefHelper.storeCache(AppConstant.ABOUT, jsonEncode(about));
   }
 
   @override
-  Future<Statistics> getStatistics() {
-    return SharedPreferences.getInstance().then((prefs) {
-      Map json = jsonDecode(prefs.getString(AppConstant.STATISTICS));
+  Future<Statistics> getStatistics() async {
+    var fromCache = await PrefHelper.getCache(AppConstant.STATISTICS);
+    if (fromCache != null) {
+      Map json = jsonDecode(fromCache);
       return Statistics.fromJson(json);
-    });
+    }
+    return null;
   }
 
   Future<bool> saveStatistics(Statistics statistics) {
-    return SharedPreferences.getInstance().then((prefs) {
-      String json = jsonEncode(statistics);
-      return prefs.setString(AppConstant.STATISTICS, json);
-    });
+    return PrefHelper.storeCache(
+        AppConstant.STATISTICS, jsonEncode(statistics));
   }
 
   @override
-  Future<List<ListConfirmed>> getListConfirmed() {
-    return SharedPreferences.getInstance().then((prefs) {
-      Iterable iterable = jsonDecode(prefs.getString(AppConstant.CONFIRMED));
+  Future<List<ListConfirmed>> getListConfirmed() async {
+    var fromCache = await PrefHelper.getCache(AppConstant.CONFIRMED);
+    if (fromCache != null) {
+      Iterable iterable = jsonDecode(fromCache);
       return iterable.map((e) => ListConfirmed.fromJson(e)).toList();
-    });
+    }
+    return null;
   }
 
   Future<bool> saveListConfirmed(List<ListConfirmed> listConfirmed) {
-    return SharedPreferences.getInstance().then((prefs) {
-      String json = jsonEncode(listConfirmed);
-      return prefs.setString(AppConstant.CONFIRMED, json);
-    });
+    return PrefHelper.storeCache(AppConstant.ABOUT, jsonEncode(listConfirmed));
   }
-
 }

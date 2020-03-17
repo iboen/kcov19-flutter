@@ -14,7 +14,7 @@ abstract class RestClient {
   Future<List<Category>> getCategories();
 
   @GET("/posts")
-  Future<List<Post>> getPosts();
+  Future<List<Post>> getPosts(@Query("page") int page);
 
   @GET("/posts")
   Future<List<Post>> getPostsByCategory(@Query("categories") String category);
