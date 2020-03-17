@@ -1,3 +1,4 @@
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,6 +19,9 @@ void main() async {
   // We can set the BlocSupervisor's delegate to an instance of `SimpleBlocDelegate`.
   // This will allow us to handle all transitions and errors in SimpleBlocDelegate.
   BlocSupervisor.delegate = SimpleBlocDelegate();
+
+  // Pass all uncaught errors from the framework to Crashlytics.
+  FlutterError.onError = Crashlytics.instance.recordFlutterError;
 
   runApp(MyApp());
 }

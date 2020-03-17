@@ -22,8 +22,8 @@ if (flutterRoot == null) {
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
-def flutterVersionCode = '1';
-def flutterVersionName = '1.1.0'
+def flutterVersionCode = '4';
+def flutterVersionName = '1.1.1'
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
@@ -84,3 +84,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.2.2'
     // implementation 'com.google.firebase:firebase-messaging:20.1.2'
 }
+
+apply plugin: 'io.fabric'

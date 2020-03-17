@@ -31,9 +31,4 @@ class ApiRepository implements Repository {
     return client.getStatistics();
   }
 
-  @override
-  Future<List<ListConfirmed>> getListConfirmed() {
-    return client.getListConfirmed();
-  }
-
 }

@@ -10,5 +10,4 @@ abstract class Repository {
 
   Future<Statistics> getStatistics();
 
-  Future<List<ListConfirmed>> getListConfirmed();
 }

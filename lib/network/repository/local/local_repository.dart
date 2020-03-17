@@ -3,7 +3,6 @@ import 'package:kawalcovid19/common/pref_helper.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/api/rest_client.dart';
 import 'package:kawalcovid19/network/repository/repository.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalRepository implements Repository {
   @override
@@ -71,17 +70,4 @@ class LocalRepository implements Repository {
         AppConstant.STATISTICS, jsonEncode(statistics));
   }
 
-  @override
-  Future<List<ListConfirmed>> getListConfirmed() async {
-    var fromCache = await PrefHelper.getCache(AppConstant.CONFIRMED);
-    if (fromCache != null) {
-      Iterable iterable = jsonDecode(fromCache);
-      return iterable.map((e) => ListConfirmed.fromJson(e)).toList();
-    }
-    return null;
-  }
-
-  Future<bool> saveListConfirmed(List<ListConfirmed> listConfirmed) {
-    return PrefHelper.storeCache(AppConstant.ABOUT, jsonEncode(listConfirmed));
-  }
 }

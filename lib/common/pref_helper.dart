@@ -8,7 +8,7 @@ class PrefHelper {
   static const DATA = "data";
 
   static Future<bool> storeCache(String key, String json,
-      {int lastChecked, int interval = 86400000}) {
+      {int lastChecked, int interval = 3600000}) {
     if (lastChecked == null) {
       lastChecked = DateTime.now().millisecondsSinceEpoch;
     }

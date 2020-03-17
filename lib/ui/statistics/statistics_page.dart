@@ -46,9 +46,9 @@ class _StatisticsPageState extends State<StatisticsPage> {
                         height: 16,
                       ),
                       OutlineButton(
-                        child: Text("Daftar Kasus Lengkap »"),
+                        child: Text("Lihat Statistik Harian »"),
                         onPressed: () {
-                          Navigation.launchURL("https://kcov.id/daftarpositif");
+                          Navigation.launchURL("http://kcov.id/statistik-harian");
                         },
                       )
                     ],

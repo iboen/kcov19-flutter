@@ -1,13 +1,12 @@
 class AppConstant {
   static String appName = "KawalCOVID19";
 
-  static const POSTS = "posts";
-  static const FAQ = "faq";
-  static const ABOUT = "about";
-  static const STATISTICS = "statistics-id";
+  static const POSTS = "/posts";
+  static const FAQ = "/faq";
+  static const ABOUT = "/about";
+  static const STATISTICS = "/statistics";
 
   //DEPRECATED
-  static const CONFIRMED = "confirmed";
 
   static const RC_LATEST_VERSION = "latestVersionName";
   static const RC_IS_FORCE_UPDATE= "isForceUpdate";

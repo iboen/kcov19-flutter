@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/api/rest_client.dart';
 import 'package:kawalcovid19/network/repository/local/local_repository.dart';
 import 'package:kawalcovid19/network/repository/remote/api_repository.dart';
@@ -85,23 +84,4 @@ class KcovRepository implements Repository {
     return local.saveStatistics(statistics);
   }
 
-  @override
-  Future<List<ListConfirmed>> getListConfirmed() async {
-    try {
-      var fromLocal = await local.getListConfirmed();
-      if (fromLocal != null) {
-        return fromLocal;
-      } else {
-        throw Exception();
-      }
-    } catch (_) {
-      final data = await api.getListConfirmed();
-      local.saveListConfirmed(data);
-      return data;
-    }
-  }
-
-  Future<bool> saveListConfirmed(List<ListConfirmed> listConfirmed) {
-    return local.saveListConfirmed(listConfirmed);
-  }
 }

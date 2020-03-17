@@ -44,9 +44,9 @@ _showVersionDialog(context, PackageInfo info) async {
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
-      String title = "Ada Versi Terbaru";
+      String title = "Ada versi terbaru";
       String message =
-          "Versi terbaru telah tersedia, silakan perbaharui aplikasi sekarang juga.";
+          "Versi terbaru telah tersedia, silakan unduh sekarang juga.";
       String btnLabel = "Unduh sekarang";
       String btnLabelCancel = "Nanti";
       return Platform.isIOS
@@ -56,7 +56,6 @@ _showVersionDialog(context, PackageInfo info) async {
               actions: <Widget>[
                 FlatButton(
                   child: Text(btnLabel),
-                  // TODO appId
                   onPressed: () => Navigation.launchURL("https://kcov.id/kcapp"),
                 ),
                 FlatButton(

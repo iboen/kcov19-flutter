@@ -1,4 +1,7 @@
 PODS:
+  - Crashlytics (3.14.0):
+    - Fabric (~> 1.10.2)
+  - Fabric (1.10.2)
   - Firebase/Analytics (6.20.0):
     - Firebase/Core
   - Firebase/Core (6.20.0):
@@ -11,6 +14,11 @@ PODS:
     - FirebaseRemoteConfig (~> 4.4.9)
   - firebase_analytics (0.0.1):
     - Firebase/Analytics (~> 6.0)
+    - Firebase/Core
+    - Flutter
+  - firebase_crashlytics (0.0.1):
+    - Crashlytics
+    - Fabric
     - Firebase/Core
     - Flutter
   - firebase_remote_config (0.0.1):
@@ -120,6 +128,7 @@ PODS:
 
 DEPENDENCIES:
   - firebase_analytics (from `.symlinks/plugins/firebase_analytics/ios`)
+  - firebase_crashlytics (from `.symlinks/plugins/firebase_crashlytics/ios`)
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - Flutter (from `Flutter`)
   - launch_review (from `.symlinks/plugins/launch_review/ios`)
@@ -136,6 +145,8 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Crashlytics
+    - Fabric
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -158,6 +169,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   firebase_analytics:
     :path: ".symlinks/plugins/firebase_analytics/ios"
+  firebase_crashlytics:
+    :path: ".symlinks/plugins/firebase_crashlytics/ios"
   firebase_remote_config:
     :path: ".symlinks/plugins/firebase_remote_config/ios"
   Flutter:
@@ -184,8 +197,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_web/ios"
 
 SPEC CHECKSUMS:
+  Crashlytics: 540b7e5f5da5a042647227a5e3ac51d85eed06df
+  Fabric: 706c8b8098fff96c33c0db69cbf81f9c551d0d74
   Firebase: fe7f74012742ab403451dd283e6909b8f1fb348a
   firebase_analytics: dacdcfc524d722fff13dcff942f0dfa47e6be567
+  firebase_crashlytics: bd8c58df07f107cb7e1a20cb190b9a468e0a69fd
   firebase_remote_config: f3581c5addecc691a968f2a7f2bcdf0878509bfd
   FirebaseABTesting: 821a3a3e4a145987e80fee3657c4de1cb9adf693
   FirebaseAnalytics: 572e467f3d977825266e8ccd52674aa3e6f47eac
