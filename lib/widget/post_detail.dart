@@ -3,6 +3,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:kawalcovid19/common/sizes.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/parser.dart';
+import 'package:html/dom.dart' as dom;
 
 class PostDetail extends StatelessWidget {
   final String title;
@@ -34,7 +35,7 @@ class PostDetail extends StatelessWidget {
                 parse(parse(title).body.text).documentElement.text.trim(),
                 style: TextStyle(
                   fontSize: Sizes.dp24(context),
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.w700,
                 ),
                 textAlign: TextAlign.left,
               ),
@@ -51,6 +52,7 @@ class PostDetail extends StatelessWidget {
               ),
               SizedBox(height: Sizes.dp8(context)),
               Html(
+                defaultTextStyle: TextStyle(height: 1.4, fontSize: 17),
                 onLinkTap: (src) {
                   _launchURL(src);
                 },

@@ -63,7 +63,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 "Detail Kasus Lengkap",
                 style: TextStyle(
                   fontSize: Sizes.dp20(context),
-                  fontWeight: FontWeight.w800,
+                  fontWeight: FontWeight.bold,
                 ),
                 textAlign: TextAlign.left,
               ),

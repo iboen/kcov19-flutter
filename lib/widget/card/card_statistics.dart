@@ -107,9 +107,9 @@ class CardStatistics extends StatelessWidget {
           ),
           Center(
             child: Text(
-              "Pembaharuan Terakhir: " +
+              "Pembaharuan terakhir: " +
                   DateFormat("dd MMM yyyy HH:mm")
-                      .format((DateTime.parse(lastUpdatedAt))),
+                      .format((DateTime.parse(lastUpdatedAt).add(Duration(hours: 7)))),
               style: TextStyle(fontSize: Sizes.dp12(context)),
             ),
           ),

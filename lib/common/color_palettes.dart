@@ -16,6 +16,7 @@ class ColorPalettes{
   static Color green = Colors.green;
 
   static ThemeData lightTheme = ThemeData(
+    fontFamily: 'IBMPlexSans',
     backgroundColor: lightBG,
     primaryColor: lightPrimary,
     accentColor:  lightAccent,
@@ -28,13 +29,14 @@ class ColorPalettes{
         title: TextStyle(
           color: darkBG,
           fontSize: 18.0,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.bold,
         ),
       ),
     ),
   );
 
   static ThemeData darkTheme = ThemeData(
+    fontFamily: 'IBMPlexSans',
     brightness: Brightness.dark,
     backgroundColor: darkBG,
     primaryColor: darkPrimary,
@@ -49,7 +51,7 @@ class ColorPalettes{
         title: TextStyle(
           color: lightBG,
           fontSize: 18.0,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w700,
         ),
       ),
     ),

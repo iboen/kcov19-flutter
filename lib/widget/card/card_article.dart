@@ -34,7 +34,7 @@ class CardArticle extends StatelessWidget {
                         style: TextStyle(
                             color: Theme.of(context).backgroundColor,
                             fontSize: Sizes.dp20(context),
-                            fontWeight: FontWeight.w500),
+                            fontWeight: FontWeight.w600),
                       ),
                       Text(
                         DateFormat("MMM")
@@ -59,7 +59,7 @@ class CardArticle extends StatelessWidget {
                       parse(parse(title).body.text).documentElement.text.trim(),
                       style: TextStyle(
                         fontSize: Sizes.dp18(context),
-                        fontWeight: FontWeight.w800,
+                        fontWeight: FontWeight.w700,
                       ),
                       textAlign: TextAlign.left,
                     ),

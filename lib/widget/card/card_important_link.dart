@@ -24,7 +24,7 @@ class CardImportantLink extends StatelessWidget {
               title,
               style: TextStyle(
                 fontSize: Sizes.dp20(context),
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w700,
               ),
               textAlign: TextAlign.left,
             ),
