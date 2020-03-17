@@ -15,21 +15,34 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
   @override
   Stream<PostsState> mapEventToState(PostsEvent event) async* {
     if (event is LoadPosts) {
-      yield* _mapLoadPostsToState();
+      yield* _mapLoadPostsToState(1);
+    } else if (event is LoadMorePosts) {
+      yield* _mapLoadPostsToState(event.page);
     }
   }
 
-  Stream<PostsState> _mapLoadPostsToState() async* {
+  Stream<PostsState> _mapLoadPostsToState(int page) async* {
     try {
-      yield PostsLoading();
+      var currentPosts;
+      if (state is PostsLoaded) {
+        currentPosts = (state as PostsLoaded).posts.toList();
+      } else {
+        yield PostsLoading();
+      }
 
       // call api
-      var posts = await repository.getPosts();
-
-      yield PostsLoaded(posts);
+      var newPosts = await repository.getPosts(page);
+      var resPosts;
+      if (page > 1 && currentPosts != null) {
+        // if load more
+        resPosts = currentPosts..addAll(newPosts);
+      } else {
+        resPosts = newPosts;
+      }
+      yield PostsLoaded(resPosts, page);
     } catch (_) {
       print(_.toString());
-      yield PostsNotLoaded(AppConstant.ERROR_GENERAL);
+      if (page == 1) yield PostsNotLoaded(AppConstant.ERROR_GENERAL);
     }
   }
 }

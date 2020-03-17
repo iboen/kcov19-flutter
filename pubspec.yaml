@@ -37,7 +37,8 @@ dependencies:
   firebase_remote_config: ^0.3.0+3
   package_info: ^0.4.0+14
   launch_review: ^2.0.0
-  onesignal_flutter: ^2.1.0
+  onesignal_flutter: ^2.3.4
+  lazy_load_scrollview: 1.0.1
 
 
 dev_dependencies:
