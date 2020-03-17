@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:kawalcovid19/blocs/confirmed/confirmed_bloc.dart';
 import 'package:kawalcovid19/blocs/post/bloc.dart';
 import 'package:kawalcovid19/blocs/posts/bloc.dart';
 import 'package:kawalcovid19/blocs/statistics/statistics_bloc.dart';
@@ -84,19 +83,10 @@ class _DashBoardState extends State<DashBoardPage> {
             },
             child: FAQPage(),
           ),
-          MultiBlocProvider(
-            providers: [
-              BlocProvider<StatisticsBloc>(
-                create: (context) {
-                  return StatisticsBloc(KcovRepository());
-                },
-              ),
-              BlocProvider<ConfirmedBloc>(
-                create: (context) {
-                  return ConfirmedBloc(KcovRepository());
-                },
-              ),
-            ],
+          BlocProvider<StatisticsBloc>(
+            create: (context) {
+              return StatisticsBloc(KcovRepository());
+            },
             child: StatisticsPage(),
           ),
           MorePage(),
