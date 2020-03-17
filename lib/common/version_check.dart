@@ -5,17 +5,9 @@ import 'dart:io';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kawalcovid19/common/navigation.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:package_info/package_info.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-_launchURL(url) async {
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
 
 versionCheck(context) async {
   //Get Current installed version of app
@@ -65,7 +57,7 @@ _showVersionDialog(context, PackageInfo info) async {
                 FlatButton(
                   child: Text(btnLabel),
                   // TODO appId
-                  onPressed: () => _launchURL("https://kcov.id/app"),
+                  onPressed: () => Navigation.launchURL("https://kcov.id/kcapp"),
                 ),
                 FlatButton(
                   child: Text(btnLabelCancel),
@@ -84,7 +76,7 @@ _showVersionDialog(context, PackageInfo info) async {
                 FlatButton(
                   child: Text(btnLabel),
                   onPressed: () =>
-                      _launchURL("https://kcov.id/app"),
+                      Navigation.launchURL("https://kcov.id/kcapp"),
                 ),
               ],
             );

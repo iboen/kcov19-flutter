@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:kawalcovid19/common/navigation.dart';
+import 'package:package_info/package_info.dart';
 
 class Developer {
   const Developer({this.name});
@@ -17,12 +18,9 @@ const List<Developer> choices = const <Developer>[
 class AboutDevPage extends StatelessWidget {
   static const routeName = '/about-dev';
 
-  _launchURL(url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+  Future<String> _getVersion() async {
+    final PackageInfo info = await PackageInfo.fromPlatform();
+    return info.version;
   }
 
   @override
@@ -38,11 +36,20 @@ class AboutDevPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  "Aplikasi mobile ini dibuat oleh tim relawan dari\nGITS Indonesia & Family",
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
+                FutureBuilder<String>(
+                    future: _getVersion(),
+                    builder:
+                    (BuildContext context, AsyncSnapshot<String> snapshot) {
+                  var verInfo = "";
+                  if (snapshot.hasData) {
+                    verInfo = "(versi ${snapshot.data})";
+                  }
+                  return Text(
+                    "Aplikasi mobile ini $verInfo dibuat oleh tim relawan dari\nGITS Indonesia & Family",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
+                  );
+                }),
                 SizedBox(
                   height: 16,
                 ),
@@ -55,7 +62,7 @@ class AboutDevPage extends StatelessWidget {
                 ),
                 FlatButton(
                   onPressed: () {
-                    _launchURL("https://gits.id");
+                    Navigation.launchURL("https://gits.id");
                   },
                   child: Text(
                     "(www.gits.id)",
