@@ -58,14 +58,15 @@ class ListConfirmed extends Equatable {
 class Statistics extends Equatable {
 
   final Value confirmed;
+  final Value activeCare;
   final Value recovered;
   final Value deaths;
   final Value metadata;
 
-  Statistics(this.confirmed, this.recovered, this.deaths, this.metadata);
+  Statistics(this.confirmed, this.activeCare, this.recovered, this.deaths, this.metadata);
 
   @override
-  List<Object> get props => [confirmed, recovered, deaths, metadata];
+  List<Object> get props => [confirmed, activeCare, recovered, deaths, metadata];
 
   factory Statistics.fromJson(Map<String, dynamic> json) => _$StatisticsFromJson(json);
   Map<String, dynamic> toJson() => _$StatisticsToJson(this);
@@ -113,8 +114,9 @@ class Post extends Equatable {
   final Renderable excerpt;
   final Renderable content;
   final String date;
+  final String slug;
 
-  Post(this.id, this.title, this.excerpt, this.content, this.date);
+  Post(this.id, this.title, this.excerpt, this.content, this.date, this.slug);
 
   @override
   List<Object> get props => [id, excerpt, title, content, date];

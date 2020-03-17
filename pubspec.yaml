@@ -39,6 +39,7 @@ dependencies:
   launch_review: ^2.0.0
   onesignal_flutter: ^2.3.4
   lazy_load_scrollview: 1.0.1
+  share: ^0.6.3+6
 
 
 dev_dependencies:

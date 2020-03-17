@@ -75,9 +75,11 @@ class _HomePageState extends State<HomePage> {
                         context,
                         DetailArticle.routeName,
                         ScreenArguments(
+                          post.id,
                           post.title.rendered,
                           post.excerpt.rendered,
                           post.content.rendered,
+                          post.slug,
                         ),
                       );
                     },

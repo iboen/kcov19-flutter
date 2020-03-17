@@ -1,8 +1,24 @@
 // temporary data dummy until have API
 List importantLink = [
   {
+    "title": "GIS Hub Kawal COVID-19",
+    "link": "https://kcov.id/map"
+  },
+  {
+    "title": "Peta Kasus COVID-19 di Indonesia",
+    "link": "https://kcov.id/petapositif"
+  },
+  {
     "title": "Daftar Kasus COVID-19 di Indonesia",
-    "link": "https://docs.google.com/spreadsheets/d/1ma1T9hWbec1pXlwZ89WakRk-OfVUQZsOCFl4FwZxzVw/edit#gid=0"
+    "link": "https://kcov.id/daftarpositif"
+  },
+  {
+    "title": "Statistik Harian Kasus COVID-19 di Indonesia",
+    "link": "https://kcov.id/statistik-harian"
+  },
+  {
+    "title": "Kompilasi TurnBackHoax COVID-19",
+    "link": "https://kcov.id/mafindokompilasihoax"
   },
   {
     "title": "Peta Rumah Sakit Rujukan di Indonesia",
@@ -22,11 +38,11 @@ List importantLink = [
   },
   {
     "title": "Peta Kasus Global COVID-19",
-    "link": "https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6"
+    "link": "https://arcg.is/0fHmTX"
   },
   {
     "title": "Peta Kasus Global COVID-19 (versi mobile)",
-    "link": "https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/85320e2ea5424dfaaa75ae62e5c06e61"
+    "link": "https://arcg.is/1DPOWm0"
   },
   {
     "title": "Kominfo - Kumpulan Hoaks Terkait Virus Corona",

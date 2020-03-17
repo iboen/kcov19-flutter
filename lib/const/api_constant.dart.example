@@ -1,3 +1,4 @@
 class ApiConstant {
   static const baseUrl = "http://demo5353862.mockable.io/";
+  static const oneSignalAppId = "df1b119e-14c3-4361-8a97-76ae9a827bf6"
 }

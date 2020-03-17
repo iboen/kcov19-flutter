@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kawalcovid19/blocs/post/bloc.dart';
 import 'package:kawalcovid19/common/color_palettes.dart';
+import 'package:kawalcovid19/const/api_constant.dart';
 import 'package:kawalcovid19/const/app_constant.dart';
 import 'package:kawalcovid19/network/repository/kcov_repository.dart';
 import 'package:kawalcovid19/ui/about/about_page.dart';
@@ -87,7 +88,7 @@ class _MyAppState extends State<MyApp> {
     });
 
     // NOTE: Replace with your own app ID from https://www.onesignal.com
-    await OneSignal.shared.init("df1b119e-14c3-4361-8a97-76ae9a827bf6", iOSSettings: settings);
+    await OneSignal.shared.init(ApiConstant.oneSignalAppId, iOSSettings: settings);
 
     OneSignal.shared
         .setInFocusDisplayType(OSNotificationDisplayType.notification);

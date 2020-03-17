@@ -3,7 +3,6 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:kawalcovid19/common/sizes.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:html/parser.dart';
-import 'package:html/dom.dart' as dom;
 
 class PostDetail extends StatelessWidget {
   final String title;
