@@ -1,5 +1,5 @@
 # KawalCovid19 app is currently using Flutter
-Due to resctriction to publish the app to Play Store and App Store, we are moving this app to native Android, not using cross platform (Flutter) anymore.
+Due to high numbers of volunteers that are expert on Kotlin, we are moving this app to native Android, not using cross platform (Flutter) anymore.
 
 ## Features
 
