@@ -25,10 +25,10 @@ abstract class RestClient {
   @GET("/posts/282")
   Future<Post> getAbout();
 
-  @GET("https://kawalcovid19.harippe.id/api/summary")
+  @GET("<api>")
   Future<Statistics> getStatistics();
 
-  @GET("https://kawalcovid19.harippe.id/api/raw")
+  @GET("<api>")
   Future<List<ListConfirmed>> getListConfirmed();
 }
 
