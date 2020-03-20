@@ -1,4 +1,4 @@
-# (Deprecated) KawalCovid19 app is using Flutter
+# KawalCovid19 app is currently using Flutter
 Due to resctriction to publish the app to Play Store and App Store, we are moving this app to native Android, not using cross platform (Flutter) anymore.
 
 ## Features
